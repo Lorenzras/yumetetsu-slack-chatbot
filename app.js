@@ -1,32 +1,26 @@
-require('dotenv').config({ path: `${__dirname}/.env` });
+/* const client = new WebClient(SLACK_BOT_TOKEN, {
+  logLevel: LogLevel.DEBUG,
+}); */
 
+require('dotenv').config();
 const express = require('express');
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
-
 const eventsApi = require('@slack/events-api');
+const { default: mentionHandler } = require('./src/slaclEvents/mention/mentionHandler');
 
-const slackEvents = eventsApi.createEventAdapter(process.env.SLACK_SIGNING_SECRET);
+const { SLACK_SIGNING_SECRET } = process.env;
 
-const token = process.env.SLACK_BOT_TOKEN;
+const slackEvents = eventsApi.createEventAdapter(SLACK_SIGNING_SECRET);
 
-const { WebClient, LogLevel } = require('@slack/web-api');
+// const { WebClient, LogLevel } = require('@slack/web-api');
 
-const client = new WebClient(token, {
-  logLevel: LogLevel.DEBUG,
-});
-
+console.log(SLACK_SIGNING_SECRET);
 app.use('/', slackEvents.expressMiddleware());
 
-slackEvents.on('message', async (event) => {
-  console.log(event);
-  const { channel } = event;
-  if (!event.bot_profile) {
-    client.chat.postMessage({ channel, token, text: 'Test recieved!' });
-  }
-});
+slackEvents.on('app_mention', mentionHandler);
+slackEvents.on('error', (e) => console.log('error', e));
 
 app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
