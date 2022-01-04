@@ -6,14 +6,14 @@ const hankyoToBlock = ({
   mail_from: mailFrom,
   title,
   作成日時,
-}) => `
+} : any) => `
 *差出人：* ${mailFrom.value}
 *件名：* ${title.value}
 
 ${formatDistanceToNow(parseISO(作成日時.value), { addSuffix: true, locale: ja })}受信しました。
 `;
 
-export default function kintoneRecsToSlack(records, header = '未対応反響です。') {
+export default function kintoneRecsToSlack(records : any, header = '未対応反響です。') {
   const blocks = [
     {
       type: 'header',
@@ -28,7 +28,7 @@ export default function kintoneRecsToSlack(records, header = '未対応反響で
     },
   ];
 
-  records.forEach((record) => {
+  records.forEach((record : any) => {
     const { $id } = record;
     blocks.push(
       {
@@ -36,6 +36,7 @@ export default function kintoneRecsToSlack(records, header = '未対応反響で
         text: {
           type: 'mrkdwn',
           text: hankyoToBlock(record),
+          emoji: true
         },
       },
       {
@@ -43,6 +44,7 @@ export default function kintoneRecsToSlack(records, header = '未対応反響で
         text: {
           type: 'mrkdwn',
           text: `*<https://rdmuhwtt6gx7.cybozu.com/k/155/show#record=${$id.value}|Kintoneで開く>*`,
+          emoji: true
         },
       },
       {
