@@ -24,6 +24,6 @@ app.use('/slack', slackRouter);
 
 
 app.listen(PORT, () => {
-  console.log(`App listening at http://localhost:${PORT}`);
+    console.log(`App listening at http://localhost:${PORT}`);
 });
 

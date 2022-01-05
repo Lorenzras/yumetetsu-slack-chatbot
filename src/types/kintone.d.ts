@@ -1,4 +1,4 @@
 export interface kintoneAppRecord {
-  appId: string,
-  recordId: string
+    appId: string,
+    recordId: string
 }

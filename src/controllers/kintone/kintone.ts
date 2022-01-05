@@ -1,42 +1,50 @@
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
 import {kintoneAppRecord} from '../../types/kintone';
+
 import {
-  KINTONE_API_TOKEN_TOYOHASHI,
-  KINTONE_API_TOKEN_TOYOKAWA,
-  KINTONE_DOMAIN,
-  KINTONE_HANKYO_TOYOHASHI_APP_ID,
-  KINTONE_HANKYO_TOYOKAWA_APP_ID,
+    KINTONE_API_TOKEN_TOYOHASHI,
+    KINTONE_API_TOKEN_TOYOKAWA,
+    KINTONE_DOMAIN,
+    KINTONE_HANKYO_TOYOHASHI_APP_ID,
+    KINTONE_HANKYO_TOYOKAWA_APP_ID,
 } from '../../UTIL/constants';
 
 require('dotenv').config();
 
-console.log(process.env.KINTONE_API_TOKEN_TOYOKAWA);
 
 const clientToyokawa = new KintoneRestAPIClient({
-  baseUrl: KINTONE_DOMAIN,
-  auth: {apiToken: KINTONE_API_TOKEN_TOYOKAWA},
+    baseUrl: KINTONE_DOMAIN,
+    auth: {apiToken: KINTONE_API_TOKEN_TOYOKAWA},
 });
 
 const clientToyohashi = new KintoneRestAPIClient({
-  baseUrl: KINTONE_DOMAIN,
-  auth: {apiToken: KINTONE_API_TOKEN_TOYOHASHI},
+    baseUrl: KINTONE_DOMAIN,
+    auth: {apiToken: KINTONE_API_TOKEN_TOYOHASHI},
 });
 
 const resolveClientByAppId = (appId : string) => {
-  switch (appId) {
-    case KINTONE_HANKYO_TOYOHASHI_APP_ID:
-      return clientToyohashi;
-    case KINTONE_HANKYO_TOYOKAWA_APP_ID:
-      return clientToyokawa;
-  }
+    switch (appId) {
+        case KINTONE_HANKYO_TOYOHASHI_APP_ID:
+            return clientToyohashi;
+        case KINTONE_HANKYO_TOYOKAWA_APP_ID:
+            return clientToyokawa;
+    }
 };
 
-export const getRecord = async ({appId, recordId} : kintoneAppRecord) => {
-  const client = resolveClientByAppId(appId);
-  console.log(appId, recordId);
-  const record = await client?.record.getRecord({app: appId, id: recordId});
+export const getRecord = async (
+    {appId, recordId} : kintoneAppRecord,
+) => {
+    const client = resolveClientByAppId(appId);
 
-  return record;
+    let record = null;
+
+    try {
+        record = await client!.record.getRecord({app: appId, id: recordId});
+    } catch (error) {
+        console.log(error);
+    }
+
+    return record;
 };
 
 /* export const getUnprocessedHankyoToyokawa = async () => {
