@@ -22,4 +22,12 @@ export interface InteractionPayload {
     },
     actions : Array<ActionButton>
     trigger_id: string,
+    view: {
+        callback_id: string,
+        private_metadata: string,
+    },
+    message: {
+        [T as string] : string,
+        ts: string
+    }
 }

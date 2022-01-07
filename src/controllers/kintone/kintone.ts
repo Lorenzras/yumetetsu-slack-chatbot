@@ -1,5 +1,5 @@
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
-import {kintoneAppRecord} from '../../types/kintone';
+import {HankyoApp, kintoneAppRecord} from '../../types/kintone';
 
 import {
     KINTONE_API_TOKEN_TOYOHASHI,
@@ -46,6 +46,26 @@ export const getRecord = async (
 
     return record;
 };
+
+export const updateRecord = async (
+    {appId, recordId, record} : HankyoApp,
+) => {
+    const client = resolveClientByAppId(appId);
+    let result;
+
+    try {
+        result = await client!.record.updateRecord({
+            app: appId,
+            id: recordId,
+            record: record,
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+    return result;
+};
+
 
 /* export const getUnprocessedHankyoToyokawa = async () => {
   try {

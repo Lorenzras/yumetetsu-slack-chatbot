@@ -1,10 +1,12 @@
 
 import {RequestHandler} from 'express';
 import {
-    ActionButton, InteractionBody, InteractionPayload,
+    InteractionBody, InteractionPayload,
 } from '../../../types/slack';
+import blockActionsHandler from './blockActionsHandler';
+import viewSubmisssionHandler from './viewSubmisssionHandler';
+
 // import {HANKYO_TAIOU} from '../../../UTIL/constants';
-import hankyoButtonClicked from './buttons/hankyoButtonClicked';
 
 
 /* const getHankyoButton = (payload : interactionPayload) => {
@@ -13,11 +15,6 @@ import hankyoButtonClicked from './buttons/hankyoButtonClicked';
         .find((item)=>item.action_id===HANKYO_TAIOU);
 }; */
 
-const getActionButton = (payload: InteractionPayload) => {
-    console.log(payload.type, 'PAYLOAD');
-    return payload
-        .actions[0];
-};
 
 const interaction : RequestHandler = (req, res) => {
     const body : InteractionBody = req.body;
@@ -26,12 +23,11 @@ const interaction : RequestHandler = (req, res) => {
     console.log(payload);
     switch (payload.type) {
         case 'block_actions':
-            const actionButton : ActionButton = getActionButton(payload);
-            hankyoButtonClicked(actionButton, payload);
+            blockActionsHandler(payload);
             break;
         case 'view_submission':
-            console.log('Submitted View');
-            // To do
+            viewSubmisssionHandler(payload);
+            break;
     }
 
     res.status(204).json({message: 'OK'});

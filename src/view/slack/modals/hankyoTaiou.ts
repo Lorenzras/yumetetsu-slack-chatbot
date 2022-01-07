@@ -1,15 +1,19 @@
 import {View} from '@slack/types';
+import {HANKYO_TAIOU} from '../../../UTIL/constants';
 
 interface hankyouTaiouParam {
     name : string,
     emailBody : string,
+    privateMetaData: string
 }
 
 const hankyoTaiou = (
-    {name = 'レンズ', emailBody='Body'} : hankyouTaiouParam,
+    {name = 'レンズ', emailBody='Body', privateMetaData=''} : hankyouTaiouParam,
 ) : View => {
     return {
         'type': 'modal',
+        'private_metadata': privateMetaData,
+        'callback_id': HANKYO_TAIOU,
         'title': {
             'type': 'plain_text',
             'text': `対応しますか。`,
