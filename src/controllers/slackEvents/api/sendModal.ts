@@ -1,5 +1,5 @@
 import {View} from '@slack/types';
-import slackApp from '../../../../service/slackApp';
+import slackApp from '../../../service/slackApp';
 
 
 const sendModal = async (triggerId :string, view: View) => {

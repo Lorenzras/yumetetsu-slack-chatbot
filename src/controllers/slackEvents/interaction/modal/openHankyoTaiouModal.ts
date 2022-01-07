@@ -1,29 +1,22 @@
 
 
-import {kintoneAppRecord} from '../../../../types/kintone';
+import {KintoneAppRecord} from '../../../../types/kintone';
 import {ActionButton, InteractionPayload} from '../../../../types/slack';
 
 import hankyoTaiou from '../../../../view/slack/modals/hankyoTaiou';
 import {getRecord} from '../../../kintone/kintone';
-import sendModal from '../modal/sendModal';
+import sendModal from '../../api/sendModal';
 
 
 const openHankyoTaiouModal = async (
     actionButton : ActionButton, payload: InteractionPayload,
 ) => {
-    const kintoneAppRecord : kintoneAppRecord = JSON.parse(
+    const kintoneAppRecord : KintoneAppRecord = JSON.parse(
         actionButton.value,
     );
 
-    // const updatedKintoneRecord = slackPayloadToKintoneRecord(payload);
     const kintoneRecord = await getRecord(kintoneAppRecord);
 
-    // remove this here
-    /*   const updateResult = await updateRecord(
-        {...kintoneAppRecord, record: updatedKintoneRecord},
-    );
-
-    console.log(updateResult); */
 
     if (kintoneRecord) {
         const record = kintoneRecord.record;

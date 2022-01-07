@@ -17,6 +17,8 @@ import viewSubmisssionHandler from './viewSubmisssionHandler';
 
 
 const interaction : RequestHandler = (req, res) => {
+    res.status(204).json({message: 'OK'});
+
     const body : InteractionBody = req.body;
     const payload : InteractionPayload = JSON.parse(body.payload);
 
@@ -29,8 +31,6 @@ const interaction : RequestHandler = (req, res) => {
             viewSubmisssionHandler(payload);
             break;
     }
-
-    res.status(204).json({message: 'OK'});
 };
 
 export default interaction;

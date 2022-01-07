@@ -17,3 +17,11 @@ export const KINTONE_DOMAIN = process.env.KINTONE_DOMAIN;
 
 
 export const HANKYO_TAIOU = 'hankyoTaiou';
+export const HANKYO_TAIOU_SEND = `${HANKYO_TAIOU}Send`;
+// export const HANKYO_TAIOU_SEND_BLOCK = `${HANKYO_TAIOU_SEND}Block`;
+export const HANKYO_TAIOU_SEND_CHECKBOXES = `${HANKYO_TAIOU_SEND}CheckBoxes`;
+
+export const HANKYO_TAIOU_SEND_MULTILINE = `${HANKYO_TAIOU_SEND}Multiline`;
+
+export const BLOCK_TAIOUJIKO = 'blockTaiouJiko';
+export const BLOCK_BIKO = 'blockBiko';

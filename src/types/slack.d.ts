@@ -7,6 +7,23 @@ export interface ActionButton {
     value: string
 }
 
+export interface InteractionValues {
+    [BlockId : string] : {
+        [ActionId : string] : {
+            type: string,
+            value?: string,
+            selected_options?: {
+                text: {
+                    type: string,
+                    text: string
+                },
+                value: string
+            }[]
+            [T : string] : {}[]
+        }
+    }
+}
+
 export interface InteractionPayload {
     type: string,
     user: {
@@ -25,6 +42,9 @@ export interface InteractionPayload {
     view: {
         callback_id: string,
         private_metadata: string,
+        state: {
+            values : InteractionValues
+        }
     },
     message: {
         [T as string] : string,

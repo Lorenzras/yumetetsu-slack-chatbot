@@ -1,5 +1,8 @@
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
-import {HankyoApp, kintoneAppRecord} from '../../types/kintone';
+import {
+    HankyoApp,
+    KintoneAppRecord,
+} from '../../types/kintone';
 
 import {
     KINTONE_API_TOKEN_TOYOHASHI,
@@ -31,25 +34,10 @@ const resolveClientByAppId = (appId : string) => {
     }
 };
 
-export const getRecord = async (
-    {appId, recordId} : kintoneAppRecord,
-) => {
-    const client = resolveClientByAppId(appId);
-
-    let record = null;
-
-    try {
-        record = await client!.record.getRecord({app: appId, id: recordId});
-    } catch (error) {
-        console.log(error);
-    }
-
-    return record;
-};
-
 export const updateRecord = async (
     {appId, recordId, record} : HankyoApp,
 ) => {
+    console.log('updating record', appId, recordId, record);
     const client = resolveClientByAppId(appId);
     let result;
 
@@ -64,6 +52,18 @@ export const updateRecord = async (
     }
 
     return result;
+};
+
+export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
+    const client = resolveClientByAppId(appId);
+    try {
+        return client!.record.getRecord({
+            app: appId,
+            id: recordId,
+        });
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 

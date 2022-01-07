@@ -1,5 +1,5 @@
 import {InteractionPayload} from '../../../types/slack';
-import openHankyoTaiouModal from './buttons/openHankyoTaiouModal';
+import openHankyoTaiouModal from './modal/openHankyoTaiouModal';
 
 
 /* const getActionId = (payload : InteractionPayload) => {
