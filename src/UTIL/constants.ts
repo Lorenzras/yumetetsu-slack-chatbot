@@ -25,3 +25,4 @@ export const HANKYO_TAIOU_SEND_MULTILINE = `${HANKYO_TAIOU_SEND}Multiline`;
 
 export const BLOCK_TAIOUJIKO = 'blockTaiouJiko';
 export const BLOCK_BIKO = 'blockBiko';
+export const BLOCK_MAIL_BODY = 'blockMailBody';

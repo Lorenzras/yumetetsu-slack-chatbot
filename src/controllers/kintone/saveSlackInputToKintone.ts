@@ -1,6 +1,9 @@
+
+import {KintoneHankyoTaiouRecord} from '../../types/kintone';
 import {InteractionPayload} from '../../types/slack';
 import {
     BLOCK_BIKO,
+    BLOCK_MAIL_BODY,
     BLOCK_TAIOUJIKO,
     HANKYO_TAIOU_SEND_CHECKBOXES,
     HANKYO_TAIOU_SEND_MULTILINE,
@@ -12,20 +15,25 @@ const saveSlackInputToKintone = async (payload : InteractionPayload) => {
     const kintoneRecordId = JSON.parse(payload.view.private_metadata);
     const values = payload.view.state.values;
 
+    // メール内容
+    const mailBody = values[BLOCK_MAIL_BODY][HANKYO_TAIOU_SEND_MULTILINE];
+
+
+    // 対応事項
     const blockTaiouJiko = values[BLOCK_TAIOUJIKO];
     const inputCheckBoxes = blockTaiouJiko[HANKYO_TAIOU_SEND_CHECKBOXES];
-
-    const blockBiko = values[BLOCK_BIKO];
-    const inputBiko = blockBiko[HANKYO_TAIOU_SEND_MULTILINE];
-
     const selectedOptions = inputCheckBoxes
         .selected_options?.map(({value}) => value);
 
-    console.log('inputBlock', values, inputBiko);
+    // 備考
+    const blockBiko = values[BLOCK_BIKO];
+    const inputBiko = blockBiko[HANKYO_TAIOU_SEND_MULTILINE];
 
-    const record = {
+
+    const record : KintoneHankyoTaiouRecord = {
         taiouJiko: {value: selectedOptions},
         biko: {value: inputBiko.value},
+        main: {value: mailBody.value},
     };
 
     const updateResult = await updateRecord(

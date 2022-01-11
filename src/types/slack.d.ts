@@ -40,6 +40,8 @@ export interface InteractionPayload {
     actions : Array<ActionButton>
     trigger_id: string,
     view: {
+        id: string,
+        hash: string,
         callback_id: string,
         private_metadata: string,
         state: {

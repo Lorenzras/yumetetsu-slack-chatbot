@@ -10,6 +10,10 @@ interface hankyouTaiouParam {
 const hankyoTaiou = (
     {name = 'レンズ', emailBody='Body', privateMetaData=''} : hankyouTaiouParam,
 ) : View => {
+    // Slack length limit 3000
+    const cropEmailBody = emailBody.trim().slice(0, 2999);
+
+    console.log(cropEmailBody.length, 'length');
     return {
         'type': 'modal',
         'private_metadata': privateMetaData,
@@ -40,7 +44,14 @@ const hankyoTaiou = (
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
-                    'text': `*メールの内容* \n${emailBody}`,
+                    'text': `*メール内容*`,
+                },
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'plain_text',
+                    'text': cropEmailBody,
                 },
             },
 

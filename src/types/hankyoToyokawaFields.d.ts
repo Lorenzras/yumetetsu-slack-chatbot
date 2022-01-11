@@ -1,16 +1,18 @@
-
-
 declare namespace hankyo.toyokawa {
     interface Fields {
+        slackThread: kintone.fieldTypes.MultiLineText;
         mail_to: kintone.fieldTypes.SingleLineText;
+        biko: kintone.fieldTypes.MultiLineText;
         main: kintone.fieldTypes.MultiLineText;
         mail_from: kintone.fieldTypes.SingleLineText;
         title: kintone.fieldTypes.SingleLineText;
         文字列__1行__1: kintone.fieldTypes.SingleLineText;
-        文字列__複数行__0: kintone.fieldTypes.MultiLineText;
+        slackUser: kintone.fieldTypes.SingleLineText;
         slack_link: kintone.fieldTypes.Link;
+        slackTS: kintone.fieldTypes.SingleLineText;
         ルックアップ_0: kintone.fieldTypes.SingleLineText;
         ルックアップ: kintone.fieldTypes.SingleLineText;
+        slackDisplayName: kintone.fieldTypes.SingleLineText;
 
         対応事項: kintone.fieldTypes.CheckBox;
     }

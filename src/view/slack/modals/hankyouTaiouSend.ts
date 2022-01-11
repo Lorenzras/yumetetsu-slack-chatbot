@@ -2,6 +2,7 @@ import {Option, View} from '@slack/types';
 
 import {
     BLOCK_BIKO,
+    BLOCK_MAIL_BODY,
     BLOCK_TAIOUJIKO,
     HANKYO_TAIOU_SEND,
     HANKYO_TAIOU_SEND_CHECKBOXES,
@@ -10,7 +11,8 @@ import {
 
 interface HankyoTaiouSendParam {
     initialOptions ?: Option[],
-    bikoValue ?: string
+    bikoValue ?: string,
+    mailBody ?: string,
     privateMetaData: string,
     kintoneLink : string
 
@@ -20,6 +22,7 @@ const hankyouTaiouSend = ({
     initialOptions,
     privateMetaData,
     bikoValue,
+    mailBody,
     kintoneLink,
 } : HankyoTaiouSendParam) : View => {
     return {
@@ -44,21 +47,43 @@ const hankyouTaiouSend = ({
             'emoji': true,
         },
         'blocks': [
+
+            {
+                'type': 'input',
+                'block_id': BLOCK_MAIL_BODY,
+                'element': {
+                    'type': 'plain_text_input',
+                    'multiline': true,
+                    'action_id': HANKYO_TAIOU_SEND_MULTILINE,
+                    'initial_value': mailBody,
+                },
+                'label': {
+                    'type': 'plain_text',
+                    'text': 'メール内容',
+                    'emoji': true,
+                },
+            },
+            {
+                'type': 'divider',
+            },
             {
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
-                    'text': '対応事項を入力してください。',
+                    'text': '*対応事項*',
                 },
             },
             {
                 'block_id': BLOCK_TAIOUJIKO,
                 'type': 'actions',
+
                 'elements': [
+
                     {
                         'type': 'checkboxes',
                         'action_id': HANKYO_TAIOU_SEND_CHECKBOXES,
                         'initial_options': initialOptions,
+
                         'options': [
                             {
                                 'text': {
@@ -120,16 +145,17 @@ const hankyouTaiouSend = ({
                 'elements': [
                     {
                         'type': 'image',
-                        'image_url': 'https://pbs.twimg.com/profile_images/625633822235693056/lNGUneLX_400x400.jpg',
-                        'alt_text': 'cute cat',
+                        'image_url': 'https://i.ibb.co/9TSqP8V/kintone-logo.png',
+                        'alt_text': 'kintone',
                     },
                     {
                         'type': 'mrkdwn',
                         // eslint-disable-next-line max-len
-                        'text': `詳細をご覧になりますか？ *<${kintoneLink} | Kintoneで開く>*`,
+                        'text': `*<${kintoneLink} | Kintoneで編集します。>*`,
                     },
                 ],
             },
+
         ],
     };
 };
