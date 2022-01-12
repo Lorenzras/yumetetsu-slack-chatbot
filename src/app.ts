@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 // json parser will return empty body.
 // I used the following instead but it was not in slack documentation. :D
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/test', testRouter);
 app.use('/slack', slackRouter);

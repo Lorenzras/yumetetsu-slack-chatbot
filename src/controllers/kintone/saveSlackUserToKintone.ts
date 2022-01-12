@@ -1,6 +1,4 @@
-/* import {kintoneAppRecord} from '../../../../types/kintone';
-import {updateRecord} from '../../../kintone/kintone';
-import {getDisplayName} from '../../api/getUser'; */
+
 
 import {KintoneAppRecord} from './../../types/kintone';
 import {getDisplayName} from './../slackEvents/api/getUser';
@@ -15,17 +13,22 @@ interface SaveSlackUserToHankyoParam {
 const saveSlackUserToKintone = async ({
     userId, userName, kintoneRecordId,
 }: SaveSlackUserToHankyoParam) => {
+    const displayName = await getDisplayName(userId);
+
     const record = {
         slackUser: {
             value: userName,
         },
 
         slackDisplayName: {
-            value: await getDisplayName(userId),
+            value: displayName,
         },
     };
 
-    updateRecord({...kintoneRecordId, record});
+    return {
+        displayName,
+        kintoneRecord: updateRecord({...kintoneRecordId, record}),
+    };
 };
 
 export default saveSlackUserToKintone;

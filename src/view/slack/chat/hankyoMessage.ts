@@ -1,3 +1,4 @@
+import {KnownBlock} from '@slack/types';
 import {KintoneAppRecord} from '../../../types/kintone';
 
 
@@ -11,16 +12,16 @@ interface HankyoMessageParams {
 
 const hankyoMessage = ({
     name, mailFrom, mailTo, title, kintoneRecordId,
-} : HankyoMessageParams) => {
+} : HankyoMessageParams) : KnownBlock[] => {
     const {appId, recordId} = kintoneRecordId;
 
     return [
         {
-            'type': 'header',
+            'type': 'section',
             'text': {
-                'type': 'plain_text',
-                'text': `この反響の対応者は${name}です`,
-                'emoji': true,
+                'type': 'mrkdwn',
+                'text': `:white_check_mark: この反響の対応者は *${name}* さんです`,
+
             },
         },
         {
@@ -44,6 +45,9 @@ const hankyoMessage = ({
                     'text': `*キントーンで* *<https://rdmuhwtt6gx7.cybozu.com/k/${appId}/show#record=${recordId} | 見る>* ・ *<https://rdmuhwtt6gx7.cybozu.com/k/${appId}/show#record=${recordId}&mode=edit | 編集>*`,
                 },
             ],
+        },
+        {
+            'type': 'divider',
         },
 
     ];
