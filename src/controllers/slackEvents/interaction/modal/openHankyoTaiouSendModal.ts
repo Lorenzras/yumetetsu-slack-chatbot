@@ -5,8 +5,7 @@ import {
 } from '../../../../types/kintone';
 
 import {InteractionPayload} from '../../../../types/slack';
-import hankyoTaiouRaceCondition
-    from '../../../../view/slack/modals/hankyoTaiouRaceCondition';
+
 import hankyouTaiouSend
     from '../../../../view/slack/modals/hankyouTaiouSend';
 import {generateKintoneLink} from '../../../kintone/helpers';
@@ -36,42 +35,6 @@ const kintoneCheckboxToSlackOptions = (
 };
 
 
-/* const updateHankyoMessage = (
-    record : KintoneHankyoTaiouRecord | undefined,
-    kintoneRecordId : KintoneAppRecord,
-    displayName = 'いない',
-) => {
-    // const slackDisplayName = <string>record?.slackDisplayName.value;
-    const slackTS = <string>record?.slackTS.value;
-    const slackChannel = <string>record?.slackChannel.value;
-    const mailTo = <string>record?.mail_to.value;
-    const mailFrom = <string>record?.mail_from.value;
-    const title = <string>record?.title.value;
-
-    console.log(
-        'kintone',
-        displayName,
-        slackTS,
-        mailTo,
-        mailFrom,
-        title,
-        slackChannel,
-        'slack',
-    );
-
-    updateMessage({
-        ts: slackTS,
-        channel: slackChannel,
-        blocks: hankyoMessage({
-            name: displayName,
-            mailFrom,
-            mailTo,
-            title,
-            kintoneRecordId,
-        }),
-    });
-}; */
-
 const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
     const privateMetaData = payload.view.private_metadata;
     const kintoneRecordId = JSON.parse(privateMetaData);
@@ -89,23 +52,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
 
     const bikoValue = <string>record?.biko.value;
     const mailBody = <string>record?.main.value;
-    // const slackDisplayName = <string>record?.slackDisplayName.value;
-    // const isWithAssignedPerson = Boolean(slackDisplayName);
 
-
-    /* if (isWithAssignedPerson) {
-        // Anti-race condition.
-        sendModal(
-            payload.trigger_id,
-            hankyoTaiouRaceCondition({name: slackDisplayName}),
-        );
-
-        updateMessageHankyo(
-            record as unknown as KintoneHankyoTaiouRecord,
-            kintoneRecordId,
-            slackDisplayName,
-        );
-    } else { */
     if (raceConditionHandler({
         kintoneRecord: record,
         kintoneRecordId,
