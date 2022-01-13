@@ -58,14 +58,9 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
         kintoneRecordId,
         triggerId: payload.trigger_id,
     }).valid) {
-        saveSlackUserToKintone({userId, userName, kintoneRecordId})
-            .then((res)=>{
-                updateMessageHankyo(
-                    record as unknown as KintoneHankyoTaiouRecord,
-                    kintoneRecordId,
-                    res.displayName,
-                );
-            });
+        const {displayName} = await saveSlackUserToKintone({
+            userId, userName, kintoneRecordId,
+        });
 
         await sendModal(
             payload.trigger_id,
@@ -76,6 +71,13 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
                 mailBody,
                 kintoneLink: generateKintoneLink(kintoneRecordId, true),
             }),
+        );
+
+
+        updateMessageHankyo(
+            record as unknown as KintoneHankyoTaiouRecord,
+            kintoneRecordId,
+            displayName,
         );
     }
 };
