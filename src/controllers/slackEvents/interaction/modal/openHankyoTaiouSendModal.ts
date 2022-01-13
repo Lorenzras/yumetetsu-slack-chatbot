@@ -30,7 +30,7 @@ const kintoneCheckboxToSlackOptions = (
         };
     });
 
-    console.log(result);
+
     return result;
 };
 
@@ -67,7 +67,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
                 );
             });
 
-        sendModal(
+        await sendModal(
             payload.trigger_id,
             hankyouTaiouSend({
                 privateMetaData,
