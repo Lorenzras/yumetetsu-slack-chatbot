@@ -8,7 +8,7 @@ const viewSubmisssionHandler = async (payload: InteractionPayload) => {
 
     switch (callBackId) {
         case HANKYO_TAIOU:
-            openHankyoTaiouSendModal(payload);
+            await openHankyoTaiouSendModal(payload);
             return;
         case HANKYO_TAIOU_SEND:
             console.log(payload.view.state, 'Submitted');
