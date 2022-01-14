@@ -11,11 +11,11 @@ const updateMessageHankyo = (
     displayName = 'いない',
 ) => {
     // const slackDisplayName = <string>record?.slackDisplayName.value;
-    const slackTS = <string>record?.slackTS.value;
-    const slackChannel = <string>record?.slackChannel.value;
-    const mailTo = <string>record?.mail_to.value;
-    const mailFrom = <string>record?.mail_from.value;
-    const title = <string>record?.title.value;
+    const slackTS = <string>record?.slackTS?.value;
+    const slackChannel = <string>record?.slackChannel?.value;
+    const mailTo = <string>record?.mail_to?.value;
+    const mailFrom = <string>record?.mail_from?.value;
+    const title = <string>record?.title?.value;
 
     console.log(
         'kintone',
@@ -32,6 +32,7 @@ const updateMessageHankyo = (
     updateMessage({
         ts: slackTS,
         channel: slackChannel,
+        text: `反響は${displayName}が対応しました。`,
         blocks: hankyoMessage({
             name: displayName,
             mailFrom,

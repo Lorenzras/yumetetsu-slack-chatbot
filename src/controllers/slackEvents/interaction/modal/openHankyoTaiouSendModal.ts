@@ -88,6 +88,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
             );
         } else {
             // If failed, show error modal.
+            console.log('error');
             sendModal(
                 payload.trigger_id,
                 hankyoTaiouRaceCondition(),
