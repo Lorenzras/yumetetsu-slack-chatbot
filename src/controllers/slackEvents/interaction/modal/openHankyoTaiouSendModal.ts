@@ -65,7 +65,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
             userId, userName, kintoneRecordId, revision,
         });
 
-        console.log(result, 'result');
+        console.log(await result, 'result');
 
         await sendModal(
             payload.trigger_id,
