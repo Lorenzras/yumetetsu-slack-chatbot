@@ -21,7 +21,7 @@ const hankyoTaiouRaceCondition = (
     }
 
 
-    const message = name ? `こちらの反響は *${name}* さんが対応者です。` : `誰かが対応者です！`;
+    const message = name ? `こちらの反響は *${name}* さんが対応者です。` : `誰かが対応者になりました！`;
 
     return {
         'type': 'modal',
