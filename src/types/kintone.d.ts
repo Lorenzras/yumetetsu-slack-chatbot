@@ -21,5 +21,6 @@ export interface KintoneHankyoTaiouRecord {
     slackTS?: kintone.fieldTypes.SingleLineText,
     slackChannel?: kintone.fieldTypes.SingleLineText,
     slackDisplayName?: kintone.fieldTypes.SingleLineText,
+    $revison?: kintone.fieldTypes.Revision,
 
 }

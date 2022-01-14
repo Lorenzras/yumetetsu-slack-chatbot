@@ -49,13 +49,15 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
         const record = kintoneRecord?.record as
             unknown as KintoneHankyoTaiouRecord;
 
-        console.log(record, kintoneRecord, 'test');
+
         const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
             record?.taiouJiko.value as Array<string>,
         );
 
         const bikoValue = <string>record?.biko.value;
         const mailBody = <string>record?.main.value;
+        const revision = <string>record?.$revison?.value;
+        console.log(kintoneRecord, revision, 'test');
 
         if (raceConditionHandler({
             kintoneRecord: record,
