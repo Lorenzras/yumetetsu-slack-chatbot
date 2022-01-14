@@ -8,7 +8,6 @@ import express from 'express';
 
 import testRouter from './routes/test';
 import slackRouter from './routes/slack';
-import bodyParser from 'body-parser';
 
 require('dotenv').config();
 

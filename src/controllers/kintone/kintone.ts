@@ -35,7 +35,7 @@ const resolveClientByAppId = (appId : string) => {
 };
 
 export const updateRecord = async (
-    {appId, recordId, record} : HankyoApp,
+    {appId, recordId, record, revision} : HankyoApp,
 ) => {
     console.log('updating record', appId, recordId, record);
     const client = resolveClientByAppId(appId);
@@ -46,6 +46,7 @@ export const updateRecord = async (
             app: appId,
             id: recordId,
             record: record,
+            revision,
         });
     } catch (error) {
         console.log(error);

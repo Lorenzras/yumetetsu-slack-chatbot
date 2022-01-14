@@ -7,11 +7,12 @@ import {updateRecord} from './kintone';
 interface SaveSlackUserToHankyoParam {
     userId: string,
     userName: string,
-    kintoneRecordId: KintoneAppRecord
+    kintoneRecordId: KintoneAppRecord,
+    revision: string
 }
 
 const saveSlackUserToKintone = async ({
-    userId, userName, kintoneRecordId,
+    userId, userName, kintoneRecordId, revision,
 }: SaveSlackUserToHankyoParam) => {
     const displayName = await getDisplayName(userId);
 

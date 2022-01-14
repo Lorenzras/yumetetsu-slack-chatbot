@@ -8,17 +8,21 @@ interface HankyoTaiouRaceConditionParam {
     privateMetaData?: string
 }
 
-const hankyoTaiouRaceCondition = (
-    {
-        name = 'レンズ',
-        emailBody='Body',
-        privateMetaData='',
-    } : HankyoTaiouRaceConditionParam,
-) : View => {
-    // Slack length limit 3000
-    const cropEmailBody = emailBody.trim().slice(0, 2999);
 
-    console.log(cropEmailBody.length, 'length');
+const hankyoTaiouRaceCondition = (
+    param?: HankyoTaiouRaceConditionParam,
+) : View => {
+    let name: string | undefined;
+    let privateMetaData :string | undefined;
+
+    if (typeof param !== undefined) {
+        name = param?.name;
+        privateMetaData = param?.privateMetaData;
+    }
+
+
+    const message = name ? `こちらの反響は *${name}* さんが対応者です。` : `誰かが対応者です！`;
+
     return {
         'type': 'modal',
         'private_metadata': privateMetaData,
@@ -36,7 +40,7 @@ const hankyoTaiouRaceCondition = (
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
-                    'text': `こちらの反響は *${name}* さんが対応者です。`,
+                    'text': message,
                 },
             },
         ],

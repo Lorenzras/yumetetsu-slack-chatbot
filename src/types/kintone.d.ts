@@ -7,7 +7,8 @@ export interface KintoneAppRecord {
 }
 
 export interface HankyoApp extends KintoneAppRecord {
-    record : RecordForParameter
+    record : RecordForParameter,
+    revision: string
 }
 
 export interface KintoneHankyoTaiouRecord {
