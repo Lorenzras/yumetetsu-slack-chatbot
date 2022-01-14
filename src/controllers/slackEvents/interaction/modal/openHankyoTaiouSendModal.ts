@@ -56,7 +56,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
 
         const bikoValue = <string>record?.biko.value;
         const mailBody = <string>record?.main.value;
-        const revision = <string>record?.$revison?.value;
+        const revision = <string>record?.$revision?.value;
         console.log(record, revision, 'test');
 
         if (raceConditionHandler({
