@@ -5,6 +5,8 @@ import {
 } from '../../../../types/kintone';
 
 import {InteractionPayload} from '../../../../types/slack';
+import hankyoTaiouRaceCondition
+    from '../../../../view/slack/modals/hankyoTaiouRaceCondition';
 
 import hankyouTaiouSend
     from '../../../../view/slack/modals/hankyouTaiouSend';
@@ -65,25 +67,32 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
             userId, userName, kintoneRecordId, revision,
         });
 
-        console.log(await result, 'result');
+        if ((await result)?.revision) {
+            // If succesfully updated, show next modal
+            await sendModal(
+                payload.trigger_id,
+                hankyouTaiouSend({
+                    privateMetaData,
+                    initialOptions: selectedTaiouJiko,
+                    bikoValue,
+                    mailBody,
+                    kintoneLink: generateKintoneLink(kintoneRecordId, true),
+                }),
+            );
 
-        await sendModal(
-            payload.trigger_id,
-            hankyouTaiouSend({
-                privateMetaData,
-                initialOptions: selectedTaiouJiko,
-                bikoValue,
-                mailBody,
-                kintoneLink: generateKintoneLink(kintoneRecordId, true),
-            }),
-        );
 
-
-        updateMessageHankyo(
-            record as unknown as KintoneHankyoTaiouRecord,
-            kintoneRecordId,
-            displayName,
-        );
+            updateMessageHankyo(
+                record as unknown as KintoneHankyoTaiouRecord,
+                kintoneRecordId,
+                displayName,
+            );
+        } else {
+            // If failed, show error modal.
+            sendModal(
+                payload.trigger_id,
+                hankyoTaiouRaceCondition(),
+            );
+        }
     }
 };
 
