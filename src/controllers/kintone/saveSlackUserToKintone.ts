@@ -28,7 +28,7 @@ const saveSlackUserToKintone = async ({
 
     return {
         displayName,
-        kintoneRecord: updateRecord({...kintoneRecordId, record, revision}),
+        result: updateRecord({...kintoneRecordId, record, revision}),
     };
 };
 
