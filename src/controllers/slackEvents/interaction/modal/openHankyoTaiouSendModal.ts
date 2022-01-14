@@ -49,7 +49,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
         const record = kintoneRecord?.record as
             unknown as KintoneHankyoTaiouRecord;
 
-        console.log(record, 'test');
+        console.log(record, kintoneRecord, 'test');
         const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
             record?.taiouJiko.value as Array<string>,
         );
