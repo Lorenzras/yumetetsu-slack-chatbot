@@ -11,6 +11,7 @@
     "dtsgen-toyohashi" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 167 --type-name Fields --namespace hankyo.toyohashi -o src/types/hankyoToyohashiFields.d.ts"
   },
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "@kintone/rest-api-client": "^2.0.29",
