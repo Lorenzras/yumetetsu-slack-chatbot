@@ -11,7 +11,6 @@ import {
 
 require('dotenv').config();
 
-
 /* const clientToyokawa = new KintoneRestAPIClient({
     baseUrl: KINTONE_DOMAIN,
     auth: {apiToken: KINTONE_API_TOKEN_TOYOKAWA},
@@ -64,7 +63,7 @@ export const updateRecord = async (
 
 export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
     const client = unifiedClient;
-    console.log(client, 'client');
+    console.log(KINTONE_API_TOKEN, 'CLIENT');
     try {
         return client!.record.getRecord({
             app: appId,
@@ -88,3 +87,4 @@ export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
  */
 
 export default {};
+
