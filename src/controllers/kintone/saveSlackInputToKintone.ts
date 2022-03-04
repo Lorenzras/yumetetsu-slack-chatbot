@@ -23,7 +23,7 @@ const saveSlackInputToKintone = async (payload : InteractionPayload) => {
     const blockTaiouJiko = values[BLOCK_TAIOUJIKO];
     const inputCheckBoxes = blockTaiouJiko[HANKYO_TAIOU_SEND_CHECKBOXES];
     const selectedOptions = inputCheckBoxes
-        .selected_options?.map(({value}) => value);
+        .selected_options!.map(({value}) => value);
 
     // 備考
     const blockBiko = values[BLOCK_BIKO];
@@ -32,8 +32,8 @@ const saveSlackInputToKintone = async (payload : InteractionPayload) => {
 
     const record : KintoneHankyoTaiouRecord = {
         taiouJiko: {value: selectedOptions},
-        biko: {value: inputBiko.value},
-        main: {value: mailBody.value},
+        biko: {value: inputBiko.value ?? ''},
+        main: {value: mailBody.value ?? ''},
     };
 
     const updateResult = await updateRecord(

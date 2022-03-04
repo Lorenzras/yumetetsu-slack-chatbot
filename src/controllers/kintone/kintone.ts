@@ -5,40 +5,45 @@ import {
 } from '../../types/kintone';
 
 import {
-    KINTONE_API_TOKEN_TOYOHASHI,
-    KINTONE_API_TOKEN_TOYOKAWA,
+    KINTONE_API_TOKEN,
     KINTONE_DOMAIN,
-    KINTONE_HANKYO_TOYOHASHI_APP_ID,
-    KINTONE_HANKYO_TOYOKAWA_APP_ID,
 } from '../../UTIL/constants';
 
 require('dotenv').config();
 
 
-const clientToyokawa = new KintoneRestAPIClient({
+/* const clientToyokawa = new KintoneRestAPIClient({
     baseUrl: KINTONE_DOMAIN,
     auth: {apiToken: KINTONE_API_TOKEN_TOYOKAWA},
-});
+}); */
 
-const clientToyohashi = new KintoneRestAPIClient({
+
+/* const clientToyohashi = new KintoneRestAPIClient({
     baseUrl: KINTONE_DOMAIN,
     auth: {apiToken: KINTONE_API_TOKEN_TOYOHASHI},
 });
+ */
 
-const resolveClientByAppId = (appId : string) => {
+/* const resolveClientByAppId = (appId : string) => {
     switch (appId) {
         case KINTONE_HANKYO_TOYOHASHI_APP_ID:
             return clientToyohashi;
         case KINTONE_HANKYO_TOYOKAWA_APP_ID:
             return clientToyokawa;
     }
-};
+}; */
+
+const unifiedClient = new KintoneRestAPIClient({
+    baseUrl: KINTONE_DOMAIN,
+    auth: {apiToken: KINTONE_API_TOKEN},
+});
+
 
 export const updateRecord = async (
     {appId, recordId, record, revision} : HankyoApp,
 ) => {
     console.log('updating record', appId, recordId, record);
-    const client = resolveClientByAppId(appId);
+    const client = unifiedClient;
     let result;
 
     try {
@@ -56,7 +61,7 @@ export const updateRecord = async (
 };
 
 export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
-    const client = resolveClientByAppId(appId);
+    const client = unifiedClient;
     try {
         return client!.record.getRecord({
             app: appId,
