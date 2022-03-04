@@ -6,6 +6,8 @@ import {
 
 import {
     KINTONE_API_TOKEN,
+    KINTONE_API_TOKEN_TOYOKAWA,
+    KINTONE_API_TOKEN_TOYOHASHI,
     KINTONE_DOMAIN,
 } from '../../UTIL/constants';
 
@@ -34,7 +36,11 @@ require('dotenv').config();
 
 const unifiedClient = new KintoneRestAPIClient({
     baseUrl: KINTONE_DOMAIN,
-    auth: {apiToken: KINTONE_API_TOKEN},
+    auth: {apiToken: [
+        KINTONE_API_TOKEN,
+        KINTONE_API_TOKEN_TOYOKAWA,
+        KINTONE_API_TOKEN_TOYOHASHI,
+    ]},
 });
 
 
