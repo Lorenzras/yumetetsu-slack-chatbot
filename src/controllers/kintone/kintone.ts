@@ -44,6 +44,8 @@ export const updateRecord = async (
 ) => {
     console.log('updating record', appId, recordId, record);
     const client = unifiedClient;
+
+    console.log(client, 'client');
     let result;
 
     try {
@@ -62,6 +64,7 @@ export const updateRecord = async (
 
 export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
     const client = unifiedClient;
+    console.log(client, 'client');
     try {
         return client!.record.getRecord({
             app: appId,
