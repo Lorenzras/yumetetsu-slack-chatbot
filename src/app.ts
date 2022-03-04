@@ -12,7 +12,7 @@ import slackRouter from './routes/slack';
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // json parser will return empty body.
 // I used the following instead but it was not in slack documentation. :D
