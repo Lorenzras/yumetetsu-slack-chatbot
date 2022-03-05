@@ -5,6 +5,7 @@ interface hankyoContentsParam {
     name: string,
     emailBody: string,
     taiouJiko: string,
+    biko: string,
     privateMetaData: string
 }
 
@@ -12,6 +13,7 @@ const hankyoContents = ({
     name,
     emailBody,
     taiouJiko,
+    biko,
     privateMetaData,
 } : hankyoContentsParam) : View => {
     const cropEmailBody = emailBody.trim().slice(0, 2999);
@@ -42,7 +44,7 @@ const hankyoContents = ({
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
-                    'text': `*メール内容*`,
+                    'text': `:email: *メール内容* :email:`,
                 },
             },
             {
@@ -50,6 +52,40 @@ const hankyoContents = ({
                 'text': {
                     'type': 'plain_text',
                     'text': cropEmailBody,
+                },
+            },
+
+            {type: 'divider'},
+
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'mrkdwn',
+                    'text': `:information_source: *対応事項* :information_source:`,
+                },
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'plain_text',
+                    'text': taiouJiko,
+                },
+            },
+
+            {type: 'divider'},
+
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'mrkdwn',
+                    'text': `:speech_balloon: *備考* :speech_balloon:`,
+                },
+            },
+            {
+                'type': 'section',
+                'text': {
+                    'type': 'plain_text',
+                    'text': biko,
                 },
             },
 

@@ -21,12 +21,13 @@ const openHankyoContentsModal = async (
         await getRecord(kintoneRecordId)
     )?.record as unknown as KintoneHankyoTaiouRecord;
 
-    console.log(kintoneRecord, 'SUCCESS');
-
     const emailBody = kintoneRecord
         ?.main.value?.toString() ?? 'Error. Contact Lenz. ';
     const taiouJiko = kintoneRecord
         ?.taiouJiko.value.join(', ') ?? 'Error. Contact Lenz. ';
+    const biko = kintoneRecord
+        ?.biko.value ?? 'Error. Contact Lenz. ';
+
     sendModal(
         payload.trigger_id,
         hankyoContents(
@@ -34,6 +35,7 @@ const openHankyoContentsModal = async (
                 name: payload.user.name,
                 emailBody,
                 taiouJiko,
+                biko,
                 privateMetaData: actionButton.value,
             },
         ),
