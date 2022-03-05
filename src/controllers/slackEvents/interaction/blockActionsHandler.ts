@@ -1,4 +1,5 @@
 import {InteractionPayload} from '../../../types/slack';
+import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../../UTIL/constants';
 import openHankyoTaiouModal from './modal/openHankyoTaiouModal';
 
 
@@ -22,8 +23,11 @@ const blockActions = (payload: InteractionPayload) => {
 
 
     switch (actionId) {
-        case 'hankyoTaiou':
+        case HANKYO_TAIOU:
             openHankyoTaiouModal(action, payload);
+            break;
+        case HANKYO_TAIOU_CONTENTS:
+            console.log('success');
             break;
     }
 };

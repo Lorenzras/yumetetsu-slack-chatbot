@@ -21,6 +21,7 @@ export const KINTONE_DOMAIN = process.env.KINTONE_DOMAIN;
 
 
 export const HANKYO_TAIOU = 'hankyoTaiou';
+export const HANKYO_TAIOU_CONTENTS = 'hankyoContents';
 export const HANKYO_TAIOU_SEND = `${HANKYO_TAIOU}Send`;
 // export const HANKYO_TAIOU_SEND_BLOCK = `${HANKYO_TAIOU_SEND}Block`;
 export const HANKYO_TAIOU_SEND_CHECKBOXES = `${HANKYO_TAIOU_SEND}CheckBoxes`;
