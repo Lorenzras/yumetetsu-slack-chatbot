@@ -68,7 +68,7 @@ const hankyoContents = ({
                 'type': 'section',
                 'text': {
                     'type': 'plain_text',
-                    'text': taiouJiko,
+                    'text': taiouJiko ?? '無',
                 },
             },
             /*
