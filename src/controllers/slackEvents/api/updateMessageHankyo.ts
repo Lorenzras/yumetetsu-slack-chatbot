@@ -17,17 +17,6 @@ const updateMessageHankyo = (
     const mailFrom = <string>record?.mail_from?.value;
     const title = <string>record?.title?.value;
 
-    console.log(
-        'kintone',
-        displayName,
-        slackTS,
-        mailTo,
-        mailFrom,
-        title,
-        slackChannel,
-        'slack',
-    );
-
 
     updateMessage({
         ts: slackTS,

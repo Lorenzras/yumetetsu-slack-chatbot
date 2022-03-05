@@ -28,10 +28,26 @@ const hankyoMessage = ({
             'type': 'section',
             'text': {
                 'type': 'mrkdwn',
-                // eslint-disable-next-line max-len
-                'text': `*差出人：* ${mailFrom} \n *宛先：* ${mailTo} \n *件名：* ${title}`,
+                'text': `*差出人：* ${mailFrom} \n
+                    *宛先：* ${mailTo} \n *件名：* ${title}`,
             },
         },
+        {
+            'type': 'actions',
+            'elements': [
+                {
+                    'type': 'button',
+                    'action_id': 'hankyoContents',
+                    'text': {
+                        'type': 'plain_text',
+                        'text': '対応済（詳細を見る）',
+                    },
+                    'value': JSON.stringify(kintoneRecordId),
+                },
+            ],
+
+        },
+
         {
             'type': 'context',
             'elements': [
