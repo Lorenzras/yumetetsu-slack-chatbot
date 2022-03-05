@@ -2,7 +2,10 @@ import {ActionButton,
     InteractionPayload,
 } from '../../../../types/slack';
 
-import {KintoneAppRecord} from '../../../../types/kintone';
+import {KintoneAppRecord,
+    KintoneHankyoTaiouRecord,
+} from '../../../../types/kintone';
+import {getRecord} from '../../../kintone/kintone';
 
 const openHankyoContentsModal = async (
     actionButton : ActionButton, payload: InteractionPayload,
@@ -11,7 +14,11 @@ const openHankyoContentsModal = async (
         actionButton.value,
     );
 
-    console.log(kintoneRecordId, 'SUCCESS');
+    const kintoneRecord = (
+        await getRecord(kintoneRecordId)
+    )?.record as unknown as KintoneHankyoTaiouRecord;
+
+    console.log(kintoneRecord, 'SUCCESS');
 };
 
 export default openHankyoContentsModal;
