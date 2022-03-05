@@ -7,7 +7,7 @@ const getUser = async (userId: string) => {
 export const getDisplayName = async (userId: string) => {
     const user = (await getUser(userId)).user;
 
-    const displayName = user?.profile?.display_name || user?.id;
+    const displayName = user?.profile?.display_name || user?.name;
     return displayName;
 };
 
