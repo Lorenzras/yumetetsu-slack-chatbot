@@ -18,7 +18,7 @@ const hankyoContents = ({
 } : hankyoContentsParam) : View => {
     const cropEmailBody = emailBody.trim().slice(0, 2000);
 
-    console.log(taiouJiko ?? '無');
+    console.log(taiouJiko ?? '無', 'hesdsdsdllo');
     return ({
         'type': 'modal',
         'private_metadata': privateMetaData,
