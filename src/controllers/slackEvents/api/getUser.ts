@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import slackApp from '../../../service/slackApp';
 
 const getUser = async (userId: string) => {
@@ -7,7 +8,7 @@ const getUser = async (userId: string) => {
 export const getDisplayName = async (userId: string) => {
     const user = (await getUser(userId)).user;
 
-    const displayName = user?.profile?.display_name || user?.name;
+    const displayName = user?.profile?.display_name || user?.name || user?.id || '？？';
     return displayName;
 };
 

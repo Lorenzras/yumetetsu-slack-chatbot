@@ -9,6 +9,7 @@ import {getRecord} from '../../../kintone/kintone';
 
 import sendModal from '../../api/sendModal';
 import hankyoContents from '../../../../view/slack/modals/hankyoContents';
+import {getDisplayName} from '../../api/getUser';
 
 const openHankyoContentsModal = async (
     actionButton : ActionButton, payload: InteractionPayload,
@@ -32,7 +33,7 @@ const openHankyoContentsModal = async (
         payload.trigger_id,
         hankyoContents(
             {
-                name: payload.user.name,
+                name: (await getDisplayName(payload.user.id)),
                 emailBody,
                 taiouJiko,
                 biko,
