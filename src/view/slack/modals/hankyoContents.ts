@@ -73,7 +73,7 @@ const hankyoContents = ({
                     'text': taiouJiko || '無',
                 },
             },
-            /*
+
             {type: 'divider'},
 
             {
@@ -87,9 +87,9 @@ const hankyoContents = ({
                 'type': 'section',
                 'text': {
                     'type': 'plain_text',
-                    'text': biko,
+                    'text': biko || '無',
                 },
-            }, */
+            },
 
         ],
     });
