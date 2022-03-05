@@ -28,8 +28,8 @@ const hankyoMessage = ({
             'type': 'section',
             'text': {
                 'type': 'mrkdwn',
-                'text': `*差出人：* ${mailFrom} \n
-                    *宛先：* ${mailTo} \n *件名：* ${title}`,
+                // eslint-disable-next-line max-len
+                'text': `*差出人：* ${mailFrom} \n *宛先：* ${mailTo} \n *件名：* ${title}`,
             },
         },
         {
