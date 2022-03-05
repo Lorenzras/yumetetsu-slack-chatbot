@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {View} from '@slack/types';
 
 interface hankyoContentsParam {
@@ -19,7 +20,7 @@ const hankyoContents = ({
         'private_metadata': privateMetaData,
         'title': {
             'type': 'plain_text',
-            'text': `対応しますか。`,
+            'text': `反響の内容です。`,
         },
         'close': {
             'type': 'plain_text',
@@ -28,12 +29,15 @@ const hankyoContents = ({
         },
         'blocks': [
             {
-                'type': 'section',
+                'type': 'header',
                 'text': {
-                    'type': 'mrkdwn',
-                    'text': `${name}さんが対応者です。対応しますか。`,
+                    'type': 'plain_text',
+                    'text': `:white_check_mark: ${name}さんが対応しました。:white_check_mark:`,
                 },
             },
+
+            {type: 'divider'},
+
             {
                 'type': 'section',
                 'text': {
