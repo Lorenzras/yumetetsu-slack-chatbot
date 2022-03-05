@@ -1,3 +1,5 @@
+import {View} from '@slack/types';
+
 interface hankyoContentsParam {
     name: string,
     emailBody: string,
