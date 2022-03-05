@@ -57,7 +57,7 @@ const hankyoContents = ({
 
             {type: 'divider'},
 
-            /* {
+            {
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
@@ -71,7 +71,7 @@ const hankyoContents = ({
                     'text': taiouJiko,
                 },
             },
-
+            /*
             {type: 'divider'},
 
             {
