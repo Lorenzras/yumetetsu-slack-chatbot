@@ -57,7 +57,7 @@ const hankyoContents = ({
 
             {type: 'divider'},
 
-            {
+            /* {
                 'type': 'section',
                 'text': {
                     'type': 'mrkdwn',
@@ -87,7 +87,7 @@ const hankyoContents = ({
                     'type': 'plain_text',
                     'text': biko,
                 },
-            },
+            }, */
 
         ],
     });
