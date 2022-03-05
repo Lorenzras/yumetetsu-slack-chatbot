@@ -12,13 +12,13 @@ interface hankyoContentsParam {
 const hankyoContents = ({
     name,
     emailBody,
-    taiouJiko,
+    taiouJiko = '無',
     biko,
     privateMetaData,
 } : hankyoContentsParam) : View => {
     const cropEmailBody = emailBody.trim().slice(0, 2000);
 
-    console.log(taiouJiko ?? '無', 'hesdsdsdllo');
+    console.log(taiouJiko || '無', 'hesdsdsdllo');
     return ({
         'type': 'modal',
         'private_metadata': privateMetaData,
