@@ -16,7 +16,7 @@ const hankyoContents = ({
     biko,
     privateMetaData,
 } : hankyoContentsParam) : View => {
-    const cropEmailBody = emailBody.trim().slice(0, 2999);
+    const cropEmailBody = emailBody.trim().slice(0, 1000);
     return ({
         'type': 'modal',
         'private_metadata': privateMetaData,
