@@ -8,7 +8,8 @@
     "start": "node src/app.ts",
     "dev": "nodemon src/app.ts",
     "dtsgen-toyokawa" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 155 --type-name Fields --namespace hankyo.toyokawa -o src/types/hankyoToyokawaFields.d.ts",
-    "dtsgen-toyohashi" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 167 --type-name Fields --namespace hankyo.toyohashi -o src/types/hankyoToyohashiFields.d.ts"
+    "dtsgen-toyohashi" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 167 --type-name Fields --namespace hankyo.toyohashi -o src/types/hankyoToyohashiFields.d.ts",
+    "dtsgen-hankyo" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 187 --type-name Fields --namespace hankyo -o src/types/hankyoFields.d.ts"
   },
   "author": "Lorenz Ras",
   "license": "ISC",
