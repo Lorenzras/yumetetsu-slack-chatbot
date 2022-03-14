@@ -1,11 +1,6 @@
-/* const client = new WebClient(SLACK_BOT_TOKEN, {
-  logLevel: LogLevel.DEBUG,
-}); */
+require('dotenv').config();
 
 import express from 'express';
-// import { createEventAdapter } from '@slack/events-api';
-
-
 import testRouter from './routes/test';
 import slackRouter from './routes/slack';
 
