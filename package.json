@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.ts",
     "start":"npm run build && node ./dist/app.js",
-    "start:forever": "npm  start && forever -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c 'npm start' ./",
+    "start:forever": "npm run build && forever -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c ./dist/app.js",
     "build":"tsc ",
     "dtsgen-toyokawa" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 155 --type-name Fields --namespace hankyo.toyokawa -o src/types/hankyoToyokawaFields.d.ts",
     "dtsgen-toyohashi" : "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 167 --type-name Fields --namespace hankyo.toyohashi -o src/types/hankyoToyohashiFields.d.ts",
