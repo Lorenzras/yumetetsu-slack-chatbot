@@ -2,13 +2,14 @@ import {
     KintoneAppRecord, KintoneHankyoTaiouRecord,
 } from '../../../types/kintone';
 import hankyoMessage from '../../../view/slack/chat/hankyoMessage';
+import {getDisplayName} from './getUser';
 import updateMessage from './updateMessage';
 
 
 const updateMessageHankyo = (
     record : KintoneHankyoTaiouRecord | undefined,
     kintoneRecordId : KintoneAppRecord,
-    displayName = 'いない',
+    userId = 'いない',
 ) => {
     // const slackDisplayName = <string>record?.slackDisplayName.value;
     const slackTS = <string>record?.slackTS?.value;
@@ -16,14 +17,14 @@ const updateMessageHankyo = (
     const mailTo = <string>record?.mail_to?.value;
     const mailFrom = <string>record?.mail_from?.value;
     const title = <string>record?.title?.value;
-
+    const displayName = getDisplayName(userId);
 
     updateMessage({
         ts: slackTS,
         channel: slackChannel,
         text: `反響は${displayName}が対応しました。`,
         blocks: hankyoMessage({
-            name: displayName,
+            userId: userId,
             mailFrom,
             mailTo,
             title,

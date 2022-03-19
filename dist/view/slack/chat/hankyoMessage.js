@@ -8,7 +8,7 @@ const hankyoMessage = ({ name, mailFrom, mailTo, title, kintoneRecordId, }) => {
             'type': 'section',
             'text': {
                 'type': 'mrkdwn',
-                'text': `:white_check_mark: この反響の対応者は *${name}* さんです`,
+                'text': `:white_check_mark: この反響の対応者は @${name} さんです`,
             },
         },
         {

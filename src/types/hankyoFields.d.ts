@@ -3,16 +3,17 @@ declare namespace hankyo {
         slackThread: kintone.fieldTypes.MultiLineText;
         mail_to: kintone.fieldTypes.SingleLineText;
         biko: kintone.fieldTypes.MultiLineText;
-        slackChannel: kintone.fieldTypes.SingleLineText;
         main: kintone.fieldTypes.MultiLineText;
-        mail_from: kintone.fieldTypes.SingleLineText;
         title: kintone.fieldTypes.SingleLineText;
-        文字列__1行__1: kintone.fieldTypes.SingleLineText;
         slackUser: kintone.fieldTypes.SingleLineText;
+        slackDisplayName: kintone.fieldTypes.SingleLineText;
+        slackChannel: kintone.fieldTypes.SingleLineText;
+        mail_from: kintone.fieldTypes.SingleLineText;
+        文字列__1行__1: kintone.fieldTypes.SingleLineText;
         slack_link: kintone.fieldTypes.Link;
         slackTS: kintone.fieldTypes.SingleLineText;
+        slackId: kintone.fieldTypes.SingleLineText;
         ルックアップ_0: kintone.fieldTypes.SingleLineText;
-        slackDisplayName: kintone.fieldTypes.SingleLineText;
 
         taiouJiko: kintone.fieldTypes.CheckBox;
     }

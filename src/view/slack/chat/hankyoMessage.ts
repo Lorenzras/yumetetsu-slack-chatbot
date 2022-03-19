@@ -4,7 +4,7 @@ import {HANKYO_TAIOU_CONTENTS} from '../../../UTIL/constants';
 
 
 interface HankyoMessageParams {
-    name: string,
+    userId: string,
     mailFrom: string,
     mailTo: string,
     title: string,
@@ -12,7 +12,7 @@ interface HankyoMessageParams {
 }
 
 const hankyoMessage = ({
-    name, mailFrom, mailTo, title, kintoneRecordId,
+    userId, mailFrom, mailTo, title, kintoneRecordId,
 } : HankyoMessageParams) : KnownBlock[] => {
     const {appId, recordId} = kintoneRecordId;
 
@@ -21,7 +21,7 @@ const hankyoMessage = ({
             'type': 'section',
             'text': {
                 'type': 'mrkdwn',
-                'text': `:white_check_mark: この反響の対応者は *${name}* さんです`,
+                'text': `:white_check_mark: この反響の対応者は <@${userId}> さんです`,
 
             },
         },

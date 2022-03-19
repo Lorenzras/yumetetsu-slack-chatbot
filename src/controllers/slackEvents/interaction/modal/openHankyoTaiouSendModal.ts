@@ -63,7 +63,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
         kintoneRecordId,
         triggerId: payload.trigger_id,
     }).valid) {
-        const {displayName, result} = await saveSlackUserToKintone({
+        const {result} = await saveSlackUserToKintone({
             userId, userName, kintoneRecordId, revision,
         });
 
@@ -84,7 +84,7 @@ const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
             updateMessageHankyo(
                 record as unknown as KintoneHankyoTaiouRecord,
                 kintoneRecordId,
-                displayName,
+                userId,
             );
         } else {
             // If failed, show error modal.
