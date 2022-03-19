@@ -1,15 +1,15 @@
 
 import {Option} from '@slack/types';
-import {
-    KintoneHankyoTaiouRecord,
+import type {
+  KintoneHankyoTaiouRecord,
 } from '../../../../types/kintone';
 
-import {InteractionPayload} from '../../../../types/slack';
+import type {InteractionPayload} from '../../../../types/slack';
 import hankyoTaiouRaceCondition
-    from '../../../../view/slack/modals/hankyoTaiouRaceCondition';
+  from '../../../../view/slack/modals/hankyoTaiouRaceCondition';
 
 import hankyouTaiouSend
-    from '../../../../view/slack/modals/hankyouTaiouSend';
+  from '../../../../view/slack/modals/hankyouTaiouSend';
 import {generateKintoneLink} from '../../../kintone/helpers';
 import {getRecord} from '../../../kintone/kintone';
 import saveSlackUserToKintone from '../../../kintone/saveSlackUserToKintone';
@@ -19,82 +19,82 @@ import raceConditionHandler from '../../validations/raceConditionHandler';
 
 
 const kintoneCheckboxToSlackOptions = (
-    kintoneSelectedOptions: Array<string>,
+  kintoneSelectedOptions: Array<string>,
 ): Option[] | undefined => {
-    if (!kintoneSelectedOptions.length) return;
-    const result = kintoneSelectedOptions.map<Option>((value) => {
-        return {
-            'text': {
-                'type': 'plain_text',
-                'text': value,
-            },
-            'value': value,
-        };
-    });
+  if (!kintoneSelectedOptions.length) return;
+  const result = kintoneSelectedOptions.map<Option>((value) => {
+    return {
+      'text': {
+        'type': 'plain_text',
+        'text': value,
+      },
+      'value': value,
+    };
+  });
 
 
-    return result;
+  return result;
 };
 
 
 const openHankyoTaiouActionModal = async (payload: InteractionPayload) => {
-    const privateMetaData = payload.view.private_metadata;
-    const kintoneRecordId = JSON.parse(privateMetaData);
-    const userId = payload.user.id;
-    const userName = payload.user.username;
+  const privateMetaData = payload.view.private_metadata;
+  const kintoneRecordId = JSON.parse(privateMetaData);
+  const userId = payload.user.id;
+  const userName = payload.user.username;
 
-    const kintoneRecord = await getRecord(kintoneRecordId);
+  const kintoneRecord = await getRecord(kintoneRecordId);
 
-    const record = kintoneRecord?.record as
+  const record = kintoneRecord?.record as
             unknown as KintoneHankyoTaiouRecord;
 
 
-    const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
-        record?.taiouJiko.value as Array<string>,
-    );
+  const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
+    record?.taiouJiko.value as Array<string>,
+  );
 
-    const bikoValue = <string>record?.biko.value;
-    const mailBody = <string>record?.main.value;
-    const revision = <string>record?.$revision?.value;
+  const bikoValue = <string>record?.biko.value;
+  const mailBody = <string>record?.main.value;
+  const revision = <string>record?.$revision?.value;
 
 
-    if (raceConditionHandler({
-        kintoneRecord: record,
+  if (raceConditionHandler({
+    kintoneRecord: record,
+    kintoneRecordId,
+    triggerId: payload.trigger_id,
+  }).valid) {
+    const {result} = await saveSlackUserToKintone({
+      userId, userName, kintoneRecordId, revision,
+    });
+
+    if ((await result)?.revision) {
+      // If succesfully updated, show next modal
+      await sendModal(
+        payload.trigger_id,
+        hankyouTaiouSend({
+          privateMetaData,
+          initialOptions: selectedTaiouJiko,
+          bikoValue,
+          mailBody,
+          kintoneLink: generateKintoneLink({...kintoneRecordId, isEdit: true}),
+        }),
+      );
+
+
+      updateMessageHankyo(
+        record as unknown as KintoneHankyoTaiouRecord,
         kintoneRecordId,
-        triggerId: payload.trigger_id,
-    }).valid) {
-        const {result} = await saveSlackUserToKintone({
-            userId, userName, kintoneRecordId, revision,
-        });
-
-        if ((await result)?.revision) {
-            // If succesfully updated, show next modal
-            await sendModal(
-                payload.trigger_id,
-                hankyouTaiouSend({
-                    privateMetaData,
-                    initialOptions: selectedTaiouJiko,
-                    bikoValue,
-                    mailBody,
-                    kintoneLink: generateKintoneLink(kintoneRecordId, true),
-                }),
-            );
-
-
-            updateMessageHankyo(
-                record as unknown as KintoneHankyoTaiouRecord,
-                kintoneRecordId,
-                userId,
-            );
-        } else {
-            // If failed, show error modal.
-            console.log('error');
-            sendModal(
-                payload.trigger_id,
-                hankyoTaiouRaceCondition(),
-            );
-        }
+        userId,
+      );
+    } else {
+      // If failed, show error modal.
+      console.log('error');
+      sendModal(
+        payload.trigger_id,
+        hankyoTaiouRaceCondition(),
+      );
     }
+  }
 };
 
 export default openHankyoTaiouActionModal;
