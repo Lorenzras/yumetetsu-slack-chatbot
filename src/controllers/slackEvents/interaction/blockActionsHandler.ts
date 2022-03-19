@@ -4,24 +4,29 @@ import openHankyoContentsModal from './modal/openHankyoContentsModal';
 import openHankyoTaiouModal from './modal/openHankyoTaiouModal';
 
 
-/* const getActionId = (payload : InteractionPayload) => {
-    return payload
-        .actions[0];
-}; */
-
 const getActionButton = (payload: InteractionPayload) => {
-    console.log(payload.type, 'PAYLOAD');
+    /* A block may have multiple actions,
+    but for now I still don't see the need to handle multiple action blocks,
+    so I'll just get the first one.  */
     return payload
         .actions[0];
 };
 
 
+/**
+ * Handles block actions.
+ *
+ * @param payload slack payload
+ */
 const blockActions = (payload: InteractionPayload) => {
     const action = getActionButton(payload);
+    /**
+        Be sure to set actionIds at the client side too.
+        The project is getting bigger so I am thinking to
+        make actionIds more centralized. For now, I will just manage it at
+        **serverConstants.ts -Ras 2022-03-18
+    */
     const actionId = action.action_id;
-
-    console.log(action, 'action');
-
 
     switch (actionId) {
         case HANKYO_TAIOU:
