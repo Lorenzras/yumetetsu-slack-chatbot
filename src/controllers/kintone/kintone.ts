@@ -26,14 +26,10 @@ const unifiedClient = new KintoneRestAPIClient({
 export const updateRecord = async (
   {appId, recordId, record, revision} : HankyoApp,
 ) => {
-  console.log('updating record', appId, recordId, record);
-  const client = unifiedClient;
-
-  console.log(client, 'client');
   let result;
 
   try {
-    result = await client!.record.updateRecord({
+    result = await unifiedClient.record.updateRecord({
       app: appId,
       id: recordId,
       record: record,
@@ -47,10 +43,8 @@ export const updateRecord = async (
 };
 
 export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
-  const client = unifiedClient;
-  console.log(KINTONE_API_TOKEN, 'CLIENT');
   try {
-    return client!.record.getRecord({
+    return unifiedClient.record.getRecord({
       app: appId,
       id: recordId,
     });
@@ -58,18 +52,6 @@ export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
     console.log(error);
   }
 };
-
-
-/* export const getUnprocessedHankyoToyokawa = async () => {
-  try {
-    return (await clientToyokawa.record.getRecords({app: '155'})).records;
-  } catch (error) {
-    console.log(error);
-  }
-
-  return [];
-};
- */
 
 export default {};
 
