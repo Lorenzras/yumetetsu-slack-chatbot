@@ -2,14 +2,14 @@
 import slackApp from '../../../service/slackApp';
 
 const getUser = async (userId: string) => {
-    return await slackApp.client.users.info({user: userId} );
+  return await slackApp.client.users.info({user: userId} );
 };
 
 export const getDisplayName = async (userId: string) => {
-    const user = (await getUser(userId)).user;
+  const user = (await getUser(userId)).user;
 
-    const displayName = user?.profile?.display_name || user?.name || user?.id || '？？';
-    return displayName;
+  const displayName = user?.profile?.display_name || user?.name || user?.id || '？？';
+  return displayName;
 };
 
 

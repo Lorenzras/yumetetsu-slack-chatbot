@@ -1,4 +1,4 @@
 export const APP_IDS = {
-    hankyo: '187',
-    longtermCust: '189',
+  hankyo: '187',
+  longtermCust: '189',
 };

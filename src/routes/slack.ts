@@ -1,7 +1,7 @@
 
 import {Router as router} from 'express';
 import mentionHandler
-    from '../controllers/slackEvents/mention/mentionHandler';
+  from '../controllers/slackEvents/mention/mentionHandler';
 
 import slackEvents from '../middlewares/slack';
 import pushMessage from '../controllers/slackEvents/mention/pushMessage';

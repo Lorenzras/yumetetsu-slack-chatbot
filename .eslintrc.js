@@ -32,7 +32,15 @@ module.exports = {
       'requireParamType': false,
       'requireParamDescription': false,
       'requireReturn': false,
+      'requireReturnDescription': false,
     }],
-
   },
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+
 };
