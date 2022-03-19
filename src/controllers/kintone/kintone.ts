@@ -11,28 +11,7 @@ import {
     KINTONE_DOMAIN,
 } from '../../UTIL/constants';
 
-require('dotenv').config();
-
-/* const clientToyokawa = new KintoneRestAPIClient({
-    baseUrl: KINTONE_DOMAIN,
-    auth: {apiToken: KINTONE_API_TOKEN_TOYOKAWA},
-}); */
-
-
-/* const clientToyohashi = new KintoneRestAPIClient({
-    baseUrl: KINTONE_DOMAIN,
-    auth: {apiToken: KINTONE_API_TOKEN_TOYOHASHI},
-});
- */
-
-/* const resolveClientByAppId = (appId : string) => {
-    switch (appId) {
-        case KINTONE_HANKYO_TOYOHASHI_APP_ID:
-            return clientToyohashi;
-        case KINTONE_HANKYO_TOYOKAWA_APP_ID:
-            return clientToyokawa;
-    }
-}; */
+// require('dotenv').config();
 
 const unifiedClient = new KintoneRestAPIClient({
     baseUrl: KINTONE_DOMAIN,

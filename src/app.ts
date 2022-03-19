@@ -4,8 +4,6 @@ import express from 'express';
 import testRouter from './routes/test';
 import slackRouter from './routes/slack';
 
-require('dotenv').config();
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
