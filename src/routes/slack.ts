@@ -1,6 +1,4 @@
-// slackRouter.js
 
-// import {createEventAdapter} from "@slack/events-api"
 import {Router as router} from 'express';
 import mentionHandler
     from '../controllers/slackEvents/mention/mentionHandler';
