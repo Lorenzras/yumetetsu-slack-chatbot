@@ -17,11 +17,13 @@ declare namespace Yume.longtermCust {
     custId: kintone.fieldTypes.SingleLineText;
     店舗名: kintone.fieldTypes.SingleLineText;
     連絡事項: kintone.fieldTypes.MultiLineText;
+    slackDisplayName: kintone.fieldTypes.SingleLineText;
     '町名・番地': kintone.fieldTypes.SingleLineText;
     slackChannel: kintone.fieldTypes.SingleLineText;
     郵便番号: kintone.fieldTypes.SingleLineText;
     slackTS: kintone.fieldTypes.SingleLineText;
     mobileNum: kintone.fieldTypes.SingleLineText;
+    slackUserId: kintone.fieldTypes.SingleLineText;
     都道府県: kintone.fieldTypes.SingleLineText;
     sentToSlackDate: kintone.fieldTypes.Date;
     顧客名フリガナ: kintone.fieldTypes.SingleLineText;

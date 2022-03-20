@@ -1,13 +1,19 @@
 import {kintoneClient} from '../../../../api/kintone';
-import {sendModal} from '../../../../api/slack';
+import {getDisplayName, sendModal} from '../../../../api/slack';
 import {raceConditionError} from '../modal/raceConditionError';
 
-export const stopNotify = async (payload: InteractionPayload) => {
+export const assignAction = async (payload: InteractionPayload) => {
+  const {
+    view,
+    user,
+    'trigger_id': triggerId,
+  } = payload;
   const kintoneRecord : KintoneAppRecord = JSON.parse(
-    payload.view.private_metadata);
+    view.private_metadata);
 
   const record : Partial<Yume.longtermCust.SavedFields> = {
-    isNotActive: {value: '1'},
+    slackUserId: {value: user.id},
+    slackDisplayName: {value: await getDisplayName(user.id)},
   };
 
   return kintoneClient.record.updateRecord({
@@ -18,7 +24,7 @@ export const stopNotify = async (payload: InteractionPayload) => {
   })
     .catch(()=>{
       return sendModal(
-        payload.trigger_id,
+        triggerId,
         raceConditionError({userId: kintoneRecord.slackUserId || ''}) );
     });
 };

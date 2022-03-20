@@ -74,8 +74,6 @@ export const openHankyoFormModal = async (payload: InteractionPayload) => {
           kintoneLink: generateKintoneLink({...kintoneRecordId, isEdit: true}),
         }),
       );
-
-
       updateMessageHankyo(
         record,
         kintoneRecordId,

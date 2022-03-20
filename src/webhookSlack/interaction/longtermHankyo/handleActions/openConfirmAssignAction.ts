@@ -4,7 +4,7 @@ import {sendModal} from '../../../../api/slack';
 import {confirmAction} from '../modal';
 
 
-export const openConfirmAction: SlackActionFn = async (
+export const openConfirmAssignAction: SlackActionFn = async (
   actionButton, payload,
 ) => {
   const kintoneRecordId : KintoneAppRecord = JSON.parse(
