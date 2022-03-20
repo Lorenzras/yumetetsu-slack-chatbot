@@ -1,6 +1,6 @@
 
 import {ActionButton, InteractionPayload} from '../../../types/slack';
-import {KintoneAppRecord} from '../../../types/kintone';
+
 
 import {getRecord} from '../../../api/kintone/get';
 import {sendModal} from '../../../api/slack/';

@@ -1,5 +1,5 @@
 import {InteractionPayload} from '../../types/slack';
-import {HANKYO_TAIOU, HANKYO_TAIOU_SEND} from '../../UTIL/constants';
+import {HANKYO_TAIOU, HANKYO_TAIOU_SEND} from '../../utils/constants';
 import saveSlackInputToKintone from '../../api/kintone/saveSlackInputToKintone';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
 

@@ -1,7 +1,4 @@
 import {unifiedClient} from './config';
-import type {
-  HankyoApp,
-} from '../../types/kintone';
 
 
 // require('dotenv').config();

@@ -1,7 +1,4 @@
 
-import {
-  KintoneAppRecord,
-  KintoneHankyoTaiouRecord} from '../../../../types/kintone';
 
 import {hankyoMessage} from '../blocks/message';
 import {getDisplayName} from '../../../../api/slack';

@@ -1,6 +1,5 @@
 
 
-import type {KintoneAppRecord} from './../../types/kintone';
 import {getDisplayName} from '../../api/slack/getUser';
 import {updateRecord} from './kintone';
 

@@ -24,7 +24,9 @@
   },
    "files": [
     "./node_modules/@kintone/dts-gen/kintone.d.ts",
-    "./src/types/hankyoFields.d.ts"
+    "./src/types/hankyoFields.d.ts",
+    "./src/types/kintone.d.ts",
+    "./src/types/environment.d.ts"
   ],
   "include": [
     "src/**/*",

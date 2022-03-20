@@ -1,5 +1,5 @@
 import {View} from '@slack/types';
-import {HANKYO_TAIOU} from '../../../../../UTIL/constants';
+import {HANKYO_TAIOU} from '../../../../../utils/constants';
 
 interface hankyouTaiouParam {
   name : string,

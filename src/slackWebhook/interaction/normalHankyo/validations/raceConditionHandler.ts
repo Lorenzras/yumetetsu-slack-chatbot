@@ -1,12 +1,10 @@
-import {
-  KintoneAppRecord,
-  KintoneHankyoTaiouRecord} from '../../../../types/kintone';
+
 import {sendModal} from '../../../../api/slack';
 import updateMessageHankyo from '../lib/updateMessageHankyo';
 import {raceConditionError} from '../blocks/modal';
 
 interface RaceConditionParams {
-  kintoneRecord : KintoneHankyoTaiouRecord,
+  kintoneRecord : Partial<hankyo.SavedFields>,
   kintoneRecordId: KintoneAppRecord,
   triggerId: string
 }

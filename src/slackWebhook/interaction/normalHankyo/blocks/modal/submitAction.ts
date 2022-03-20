@@ -7,7 +7,7 @@ import {
   HANKYO_TAIOU_SEND,
   HANKYO_TAIOU_SEND_CHECKBOXES,
   HANKYO_TAIOU_SEND_MULTILINE,
-} from '../../../../../UTIL/constants';
+} from '../../../../../utils/constants';
 
 interface HankyoTaiouSendParam {
   initialOptions ?: Option[],

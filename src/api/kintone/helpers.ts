@@ -1,4 +1,4 @@
-import type {KintoneAppRecord} from '../../types/kintone';
+
 
 export const generateKintoneLink = (
   {appId, recordId, isEdit=false} : KintoneAppRecord,

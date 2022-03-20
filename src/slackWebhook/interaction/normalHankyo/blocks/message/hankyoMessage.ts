@@ -1,6 +1,6 @@
 import {KnownBlock} from '@slack/types';
-import type {KintoneAppRecord} from '../../../../../types/kintone';
-import {HANKYO_TAIOU_CONTENTS} from '../../../../../UTIL/constants';
+
+import {HANKYO_TAIOU_CONTENTS} from '../../../../../utils/constants';
 
 
 interface HankyoMessageParams {

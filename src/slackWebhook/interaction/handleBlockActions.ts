@@ -1,5 +1,5 @@
 import {InteractionPayload} from '../../types/slack';
-import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../UTIL/constants';
+import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../utils/constants';
 import openHankyoContentsModal from './normalHankyo/openHankyoContentsModal';
 
 import openHankyoTaiouModal from './normalHankyo/openHankyoTaiouModal';

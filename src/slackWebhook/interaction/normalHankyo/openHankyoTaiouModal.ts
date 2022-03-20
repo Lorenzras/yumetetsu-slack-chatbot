@@ -1,5 +1,4 @@
-import {KintoneAppRecord} from '../../../types/kintone';
-import {KintoneHankyoTaiouRecord} from '../../../types/kintone';
+
 import {ActionButton, InteractionPayload} from '../../../types/slack';
 import {getRecord} from '../../../api/kintone/get';
 import {sendModal} from '../../../api/slack';
@@ -17,7 +16,7 @@ const openHankyoTaiouModal = async (
 
   const kintoneRecord = (
     await getRecord(kintoneRecordId)
-  )?.record as unknown as KintoneHankyoTaiouRecord;
+  )?.record as unknown as Partial<hankyo.SavedFields>;
 
 
   if (kintoneRecord &&
@@ -25,7 +24,7 @@ const openHankyoTaiouModal = async (
           kintoneRecord,
           kintoneRecordId,
           triggerId: payload.trigger_id} ).valid) {
-    const emailBody = kintoneRecord?.main.value?.toString() ||
+    const emailBody = kintoneRecord.main?.value.toString() ||
     '問題が発生しました。@レンズを連絡してください。';
 
     sendModal(

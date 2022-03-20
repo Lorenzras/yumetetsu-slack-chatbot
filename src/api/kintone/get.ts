@@ -1,5 +1,5 @@
 import {unifiedClient} from './config';
-import {KintoneAppRecord} from '../../types/kintone';
+
 
 export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
   try {
