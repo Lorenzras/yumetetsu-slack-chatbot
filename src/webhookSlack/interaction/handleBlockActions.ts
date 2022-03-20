@@ -1,9 +1,8 @@
 
 // import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../utils/constants';
 import {actionIds} from '../../api/slack/ids';
-import {openConfirmStopNotify} from './longtermHankyo/';
+import {openConfirmStopNotify} from './longtermHankyo';
 import openHankyoContentsModal from './normalHankyo/openHankyoContentsModal';
-
 import openHankyoTaiouModal from './normalHankyo/openHankyoTaiouModal';
 
 
