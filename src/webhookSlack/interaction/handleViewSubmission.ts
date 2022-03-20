@@ -3,11 +3,12 @@
 import {saveSlackInputToKintone} from './normalHankyo/lib';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
 import {callbackIds} from '../../api/slack/ids';
-import {getDisplayName} from '../../api/slack';
 
 import {
   updateKintone,
 } from './longtermHankyo/handleSubmissions/updateKintone';
+
+import {confirmAssignment} from './longtermHankyo';
 
 
 const handleViewSubmission = async (payload: InteractionPayload) => {
@@ -29,10 +30,7 @@ const handleViewSubmission = async (payload: InteractionPayload) => {
       });
       break;
     case callbackIds.actOnLtHankyo: // Assign agent
-      await updateKintone(payload, {
-        slackUserId: {value: payload.user.id},
-        slackDisplayName: {value: await getDisplayName(payload.user.id)},
-      });
+      await confirmAssignment(payload);
       break;
   }
 };

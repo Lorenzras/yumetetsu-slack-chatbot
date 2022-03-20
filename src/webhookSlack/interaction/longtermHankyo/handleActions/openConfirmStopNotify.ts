@@ -1,7 +1,7 @@
 
 import {getRecord} from '../../../../api/kintone';
 import {sendModal} from '../../../../api/slack';
-import {confirmStopNotify} from '../modal/confirmStopNotify';
+import {confirmStopNotify} from './blocks/';
 
 
 export const openConfirmStopNotify: SlackActionFn = async (
