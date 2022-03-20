@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+
+
 interface InteractionBody {
   payload : string
 }
@@ -54,6 +57,4 @@ interface InteractionPayload {
   }
 }
 
-
-type SlackActionFn = (
-  actionButton: ActionButton, payload: InteractionPayload ) => Promise<void>
+type SlackActionFn = (actionButton: ActionButton, payload: InteractionPayload) => Promise<any>

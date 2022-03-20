@@ -26,4 +26,5 @@ export const callbackIds= {
 
   // longterm customers
   stopNotify: 'stopNotify',
+  actOnLtHankyo: 'actOnLtHankyo',
 };
