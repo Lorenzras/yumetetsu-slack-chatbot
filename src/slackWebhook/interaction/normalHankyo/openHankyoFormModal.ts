@@ -9,9 +9,7 @@ import {
   getRecord,
 } from '../../../api/kintone';
 
-import
-saveSlackUserToKintone
-  from '../../../api/kintone/saveSlackUserToKintone';
+import saveSlackUserToKintone from './lib/saveSlackUserToKintone';
 import {sendModal} from '../../../api/slack';
 import updateMessageHankyo from './lib/updateMessageHankyo';
 import raceConditionHandler from './validations/raceConditionHandler';

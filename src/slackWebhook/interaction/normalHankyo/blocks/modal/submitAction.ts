@@ -1,13 +1,7 @@
 import {Option, View} from '@slack/types';
+import {callbackIds, actionIds} from '../../../../ids';
+import {blockIds} from '../../config';
 
-import {
-  BLOCK_BIKO,
-  BLOCK_MAIL_BODY,
-  BLOCK_TAIOUJIKO,
-  HANKYO_TAIOU_SEND,
-  HANKYO_TAIOU_SEND_CHECKBOXES,
-  HANKYO_TAIOU_SEND_MULTILINE,
-} from '../../../../../utils/constants';
 
 interface HankyoTaiouSendParam {
   initialOptions ?: Option[],
@@ -28,7 +22,7 @@ export const submitAction = ({
   return {
     'type': 'modal',
     'private_metadata': privateMetaData,
-    'callback_id': HANKYO_TAIOU_SEND,
+    'callback_id': callbackIds.hankyoSubmit,
 
     'submit': {
       'type': 'plain_text',
@@ -50,11 +44,11 @@ export const submitAction = ({
 
       {
         'type': 'input',
-        'block_id': BLOCK_MAIL_BODY,
+        'block_id': blockIds.mail,
         'element': {
           'type': 'plain_text_input',
           'multiline': true,
-          'action_id': HANKYO_TAIOU_SEND_MULTILINE,
+          'action_id': actionIds.multiline,
           'initial_value': mailBody,
         },
         'label': {
@@ -74,14 +68,14 @@ export const submitAction = ({
         },
       },
       {
-        'block_id': BLOCK_TAIOUJIKO,
+        'block_id': blockIds.actionType,
         'type': 'actions',
 
         'elements': [
 
           {
             'type': 'checkboxes',
-            'action_id': HANKYO_TAIOU_SEND_CHECKBOXES,
+            'action_id': actionIds.checkboxes,
             'initial_options': initialOptions,
 
             'options': [
@@ -127,11 +121,11 @@ export const submitAction = ({
       },
       {
         'type': 'input',
-        'block_id': BLOCK_BIKO,
+        'block_id': blockIds.note,
         'element': {
           'type': 'plain_text_input',
           'multiline': true,
-          'action_id': HANKYO_TAIOU_SEND_MULTILINE,
+          'action_id': actionIds.multiline,
           'initial_value': bikoValue,
         },
         'label': {

@@ -1,18 +1,18 @@
 import {InteractionPayload} from '../../types/slack';
-import {HANKYO_TAIOU, HANKYO_TAIOU_SEND} from '../../utils/constants';
-import saveSlackInputToKintone from '../../api/kintone/saveSlackInputToKintone';
+// import {HANKYO_TAIOU, HANKYO_TAIOU_SEND} from '../../utils/constants';
+import {saveSlackInputToKintone} from './normalHankyo/lib/';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
+import {callbackIds} from '../ids';
 
 
 const handleViewSubmission = async (payload: InteractionPayload) => {
   const callBackId = payload.view.callback_id;
 
   switch (callBackId) {
-    case HANKYO_TAIOU:
+    case callbackIds.hankyoFormOpen:
       await openHankyoFormModal(payload);
       return;
-    case HANKYO_TAIOU_SEND:
-      console.log(payload.view.state, 'Submitted');
+    case callbackIds.hankyoSubmit:
       await saveSlackInputToKintone(payload);
       return;
   }

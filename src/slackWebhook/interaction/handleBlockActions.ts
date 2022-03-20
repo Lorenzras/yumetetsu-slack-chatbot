@@ -1,5 +1,6 @@
 import {InteractionPayload} from '../../types/slack';
-import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../utils/constants';
+// import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../utils/constants';
+import {actionIds} from '../ids';
 import openHankyoContentsModal from './normalHankyo/openHankyoContentsModal';
 
 import openHankyoTaiouModal from './normalHankyo/openHankyoTaiouModal';
@@ -30,10 +31,10 @@ const handleBlockActions = (payload: InteractionPayload) => {
   const actionId = action.action_id;
 
   switch (actionId) {
-    case HANKYO_TAIOU:
+    case actionIds.hankyoConfirmOpen:
       openHankyoTaiouModal(action, payload);
       break;
-    case HANKYO_TAIOU_CONTENTS:
+    case actionIds.hankyoContents:
       openHankyoContentsModal(action, payload);
       break;
   }

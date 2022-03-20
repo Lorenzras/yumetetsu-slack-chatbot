@@ -1,7 +1,7 @@
 
 
-import {getDisplayName} from '../../api/slack/getUser';
-import {updateRecord} from './kintone';
+import {getDisplayName} from '../../../../api/slack';
+import {updateRecord} from '../../../../api/kintone';
 
 interface SaveSlackUserToHankyoParam {
   userId: string,

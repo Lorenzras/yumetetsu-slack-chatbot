@@ -1,5 +1,6 @@
 import {View} from '@slack/types';
-import {HANKYO_TAIOU} from '../../../../../utils/constants';
+import {callbackIds} from '../../../../ids';
+
 
 interface hankyouTaiouParam {
   name : string,
@@ -13,11 +14,10 @@ export const initialConfirmation = (
   // Slack length limit 3000
   const cropEmailBody = emailBody.trim().slice(0, 2999);
 
-  console.log(cropEmailBody.length, 'length');
   return {
     'type': 'modal',
     'private_metadata': privateMetaData,
-    'callback_id': HANKYO_TAIOU,
+    'callback_id': callbackIds.hankyoFormOpen,
     'title': {
       'type': 'plain_text',
       'text': `対応しますか。`,
