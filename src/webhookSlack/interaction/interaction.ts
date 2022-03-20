@@ -1,4 +1,5 @@
 
+import {ViewSubmitAction} from '@slack/bolt';
 import {RequestHandler} from 'express';
 
 import handleBlockActions from './handleBlockActions';
@@ -8,7 +9,8 @@ const interaction : RequestHandler = (req, res) => {
   res.status(204).json({message: 'OK'});
 
   const body : InteractionBody = req.body;
-  const payload : InteractionPayload = JSON.parse(body.payload);
+  const payload : InteractionPayload
+  | ViewSubmitAction = JSON.parse(body.payload);
 
   console.log('PAYLOAD TYPE:', payload);
   switch (payload.type) {
@@ -16,7 +18,7 @@ const interaction : RequestHandler = (req, res) => {
       handleBlockActions(payload);
       break;
     case 'view_submission':
-      handleViewSubmission(payload);
+      handleViewSubmission(payload as ViewSubmitAction);
       break;
   }
 };
