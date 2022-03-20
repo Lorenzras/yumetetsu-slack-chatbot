@@ -2,11 +2,13 @@ import {updateKintone} from './updateKintone';
 import {getDisplayName} from '../../../../api/slack';
 import {slackClient} from '../../../../api/slackClient';
 import {confirmedAssignment} from '../handleActions/blocks/';
+import {ViewSubmitAction} from '@slack/bolt';
 
 export const confirmAssignment = async (
   payload: InteractionPayload,
 ) => {
   const {
+
     view: {
       private_metadata: privateMetaData,
     },

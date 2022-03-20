@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import {KnownBlock} from '@slack/types';
-import {generateDoNetLink} from './../../../../../../utils';
+import {generateDoNetLink} from '../../../../../../utils';
 
 interface Param {
   userId: string,
-  custId: string,
+  custId?: string,
 }
 
 
@@ -30,7 +30,7 @@ export const confirmedAssignment = ({
         },
         {
           'type': 'mrkdwn',
-          'text': `<${generateDoNetLink(custId)}|donetworkで詳細を確認する> `,
+          'text': `<${generateDoNetLink(custId || '')}|donetworkで詳細を確認する> `,
         },
       ],
     },

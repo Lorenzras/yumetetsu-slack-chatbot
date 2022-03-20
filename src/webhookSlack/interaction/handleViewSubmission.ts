@@ -13,7 +13,7 @@ import {confirmAssignment} from './longtermHankyo';
 
 const handleViewSubmission = async (payload: InteractionPayload) => {
   const callBackId = payload.view.callback_id;
-
+  console.log('HANDLE SUBMISSION', payload);
   switch (callBackId) {
     /* Regular hankyo */
     case callbackIds.hankyoFormOpen:

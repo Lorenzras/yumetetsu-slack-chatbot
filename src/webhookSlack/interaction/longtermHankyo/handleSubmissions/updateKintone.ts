@@ -1,6 +1,6 @@
 import {kintoneClient} from '../../../../api/kintone';
 import {sendModal} from '../../../../api/slack';
-import {raceConditionError} from '../handleActions/blocks/';
+import {raceConditionError} from '../handleActions/blocks/modal';
 
 export const updateKintone = async (
   payload: InteractionPayload,
