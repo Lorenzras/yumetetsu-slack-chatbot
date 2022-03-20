@@ -1,6 +1,5 @@
 import {KnownBlock} from '@slack/types';
-
-import {HANKYO_TAIOU_CONTENTS} from '../../../../../utils/constants';
+import {actionIds} from '../../../../ids';
 
 
 interface HankyoMessageParams {
@@ -38,7 +37,7 @@ export const hankyoMessage = ({
       'elements': [
         {
           'type': 'button',
-          'action_id': HANKYO_TAIOU_CONTENTS,
+          'action_id': actionIds.hankyoContents,
           'text': {
             'type': 'plain_text',
             'text': '対応済（詳細を見る）',
