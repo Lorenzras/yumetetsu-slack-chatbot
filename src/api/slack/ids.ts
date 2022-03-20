@@ -10,13 +10,20 @@ export const actionIds = {
   hankyoConfirmOpen: 'hankyoTaiou',
   hankyoContents: 'hankyContents',
 
-  // longtermHankyo
+  // longterm customers
   actOnLtHankyo: 'actOnLtHankyo',
   stopNotify: 'stopNotify',
 };
 
-/* submitted forms */
+/**
+ * Submit Modal callbackIds
+ */
 export const callbackIds= {
+
+  // Ordinary Hankyo
   hankyoFormOpen: 'hankyoTaiou',
   hankyoSubmit: 'hankyoTaiouSends',
+
+  // longterm customers
+  stopNotify: 'stopNotify',
 };

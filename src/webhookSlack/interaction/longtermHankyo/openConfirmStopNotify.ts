@@ -1,0 +1,32 @@
+
+import {getRecord} from '../../../api/kintone';
+import {sendModal} from '../../../api/slack';
+import {confirmStopNotify} from './modal/confirmStopNotify';
+
+
+export const openConfirmStopNotify: SlackActionFn = async (
+  actionButton, payload,
+) => {
+  const kintoneRecordId : KintoneAppRecord = JSON.parse(
+    actionButton.value,
+  );
+
+
+  const kintoneResult = await getRecord(kintoneRecordId);
+  const kintoneRecord = kintoneResult
+    ?.record as unknown as Yume.longtermCust.SavedFields;
+
+
+  const {$revision} = kintoneRecord;
+  const privateMetaData = JSON.stringify({
+    ...kintoneRecordId,
+    revision: $revision.value,
+  });
+
+  const slackResp = sendModal(
+    payload.trigger_id,
+    confirmStopNotify({privateMetaData}),
+  );
+
+  console.log('RESPONSE', slackResp);
+};

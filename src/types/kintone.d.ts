@@ -1,6 +1,7 @@
 interface KintoneAppRecord {
   appId: string,
   recordId: string,
+  revision ?: string,
   isEdit ?: boolean
 }
 

@@ -1,6 +1,7 @@
 
 // import {HANKYO_TAIOU, HANKYO_TAIOU_CONTENTS} from '../../utils/constants';
 import {actionIds} from '../../api/slack/ids';
+import {openConfirmStopNotify} from './longtermHankyo/openConfirmStopNotify';
 import openHankyoContentsModal from './normalHankyo/openHankyoContentsModal';
 
 import openHankyoTaiouModal from './normalHankyo/openHankyoTaiouModal';
@@ -31,13 +32,18 @@ const handleBlockActions = (payload: InteractionPayload) => {
   const actionId = action.action_id;
 
   switch (actionId) {
+    /* Regular Hankyo */
     case actionIds.hankyoConfirmOpen:
       openHankyoTaiouModal(action, payload);
       break;
     case actionIds.hankyoContents:
       openHankyoContentsModal(action, payload);
       break;
+
+    /* longterm customers */
     case actionIds.stopNotify:
+      console.log('deny');
+      openConfirmStopNotify(action, payload);
       break;
   }
 };

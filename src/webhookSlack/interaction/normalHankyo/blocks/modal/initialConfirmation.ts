@@ -1,15 +1,15 @@
 import {View} from '@slack/types';
-import {callbackIds} from '../../../../../api/slack/ids';
+import {callbackIds} from '../../../../../api/slack/';
 
 
-interface hankyouTaiouParam {
+interface Param {
   name : string,
   emailBody : string,
   privateMetaData: string
 }
 
 export const initialConfirmation = (
-  {name = 'レンズ', emailBody='Body', privateMetaData=''} : hankyouTaiouParam,
+  {name = 'レンズ', emailBody='Body', privateMetaData=''} : Param,
 ) : View => {
   // Slack length limit 3000
   const cropEmailBody = emailBody.trim().slice(0, 2999);
