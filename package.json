@@ -8,10 +8,9 @@
     "dev": "nodemon src/app.ts",
     "start": "npm run build && node ./dist/app.js",
     "start:forever": "git pull && npm run build && forever stop yume-slack && forever start --uid yume-slack -a -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c node ./dist/app.js",
-    "build": "tsc ",
+    "build": "rimraf ./dist && tsc",
     "dtsgen:hankyo": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 187 -u RPA03 --namespace Yume.hankyo -o src/types/hankyoFields.d.ts",
     "dtsgen:ltcust": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 189 -u RPA03 --namespace Yume.longtermCust -o src/types/longtermCustFields.d.ts"
-
   },
   "author": "Lorenz Ras",
   "license": "ISC",
@@ -29,7 +28,8 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsdoc": "^37.9.7",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
