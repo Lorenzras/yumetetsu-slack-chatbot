@@ -2,6 +2,7 @@ interface KintoneAppRecord {
   appId: string,
   recordId: string,
   revision ?: string,
+  slackUserId ?: string,
   isEdit ?: boolean
 }
 

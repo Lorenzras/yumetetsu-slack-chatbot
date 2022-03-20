@@ -1,8 +1,12 @@
+/* eslint-disable valid-jsdoc */
 import {parseISO} from 'date-fns';
 import {ja} from 'date-fns/locale';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import {Block} from '@slack/types';
 
+/**
+ * @deprecated
+ */
 const hankyoToBlock = ({
   mail_from: mailFrom,
   title,

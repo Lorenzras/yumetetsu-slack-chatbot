@@ -1,4 +1,4 @@
-import {unifiedClient} from './config';
+import {kintoneClient} from './config';
 
 
 // require('dotenv').config();
@@ -10,7 +10,7 @@ export const updateRecord = async (
   let result;
 
   try {
-    result = await unifiedClient.record.updateRecord({
+    result = await kintoneClient.record.updateRecord({
       app: appId,
       id: recordId,
       record: record,

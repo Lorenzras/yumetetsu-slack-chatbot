@@ -42,7 +42,6 @@ const handleBlockActions = (payload: InteractionPayload) => {
 
     /* longterm customers */
     case actionIds.stopNotify:
-      console.log('deny');
       openConfirmStopNotify(action, payload);
       break;
   }
