@@ -5,7 +5,7 @@ import {getDisplayName} from '../../../../api/slack';
 import {updateMessage} from '../../../../api/slack';
 
 
-const updateMessageHankyo = (
+const updateMessageHankyo = async (
   record : KintoneHankyoRecord | undefined,
   kintoneRecordId : KintoneAppRecord,
   userId = 'いない',
@@ -16,12 +16,13 @@ const updateMessageHankyo = (
   const mailTo = <string>record?.mail_to?.value;
   const mailFrom = <string>record?.mail_from?.value;
   const title = <string>record?.title?.value;
-  const displayName = getDisplayName(userId);
+  const displayName = await getDisplayName(userId);
 
+  console.log(userId);
   updateMessage({
     ts: slackTS,
     channel: slackChannel,
-    text: `反響は${displayName}が対応しました。`,
+    text: `反響は${displayName} さんが対応しました。`,
     blocks: hankyoMessage({
       userId: userId,
       mailFrom,

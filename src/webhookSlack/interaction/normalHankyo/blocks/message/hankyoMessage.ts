@@ -18,6 +18,7 @@ export const hankyoMessage = ({
   return [
     {
       'type': 'section',
+      'block_id': 'headerSection',
       'text': {
         'type': 'mrkdwn',
         'text': `:white_check_mark: この反響の対応者は <@${userId}> さんです`,
