@@ -19,6 +19,7 @@ export const confirmAssignment = async (
     },
   } = payload;
 
+  console.log('PAYLOADDDD', payload);
   const parsedPrivateMetaData = JSON.parse(privateMetaData) as {custId: string};
 
   await updateKintone(payload, {
