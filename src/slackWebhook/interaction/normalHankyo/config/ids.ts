@@ -1,8 +1,6 @@
 
 import {callbackIds} from '../../../ids';
 
-export const HANKYO_TAIOU = 'hankyoTaiou';
-
 
 export const blockIds = {
   submitAction: callbackIds.hankyoSubmit + 'Block',
