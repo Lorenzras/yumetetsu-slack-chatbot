@@ -1,8 +1,7 @@
 
-import {getRecord} from '../../../api/kintone';
-import {sendModal} from '../../../api/slack';
-import {confirmStopNotify} from './modal/confirmStopNotify';
-import {raceConditionError} from './modal/raceConditionError';
+import {getRecord} from '../../../../api/kintone';
+import {sendModal} from '../../../../api/slack';
+import {confirmStopNotify} from '../modal/confirmStopNotify';
 
 
 export const openConfirmStopNotify: SlackActionFn = async (
@@ -24,14 +23,11 @@ export const openConfirmStopNotify: SlackActionFn = async (
     revision: $revision.value,
   });
 
-  /*   const slackResp = sendModal(
-    payload.trigger_id,
-    confirmStopNotify({privateMetaData}),
-  ); */
-
   const slackResp = sendModal(
     payload.trigger_id,
-    raceConditionError({userId: kintoneRecordId.slackUserId || ''}) );
+    confirmStopNotify({privateMetaData}),
+  );
+
 
   console.log('RESPONSE', slackResp);
 };

@@ -3,7 +3,7 @@
 import {saveSlackInputToKintone} from './normalHankyo/lib';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
 import {callbackIds} from '../../api/slack/ids';
-import {stopNotify} from './longtermHankyo/lib/stopNotify';
+import {stopNotify} from './longtermHankyo/handleSubmissions/stopNotify';
 
 
 const handleViewSubmission = async (payload: InteractionPayload) => {
