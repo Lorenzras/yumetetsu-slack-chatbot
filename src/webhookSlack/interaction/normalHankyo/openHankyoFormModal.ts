@@ -10,7 +10,7 @@ import {
 import saveSlackUserToKintone from './lib/saveSlackUserToKintone';
 import {sendModal} from '../../../api/slack';
 import updateMessageHankyo from './lib/updateMessageHankyo';
-import raceConditionHandler from './validations/raceConditionHandler';
+import {handleRaceCondition} from './validations/handleRaceCondition';
 
 
 const kintoneCheckboxToSlackOptions = (
@@ -41,7 +41,7 @@ export const openHankyoFormModal = async (payload: InteractionPayload) => {
   const kintoneRecord = await getRecord(kintoneRecordId);
 
   const record = kintoneRecord?.record as
-            unknown as KintoneHankyoRecord;
+            unknown as Yume.hankyo.SavedFields;
 
 
   const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
@@ -53,7 +53,7 @@ export const openHankyoFormModal = async (payload: InteractionPayload) => {
   const revision = <string>record?.$revision?.value;
 
 
-  if (raceConditionHandler({
+  if (handleRaceCondition({
     kintoneRecord: record,
     kintoneRecordId,
     triggerId: payload.trigger_id,

@@ -4,7 +4,7 @@ import {getRecord} from '../../../api/kintone/get';
 import {sendModal} from '../../../api/slack';
 
 import {initialConfirmation} from './blocks/modal';
-import raceConditionHandler from './validations/raceConditionHandler';
+import {handleRaceCondition} from './validations/handleRaceCondition';
 
 
 const openHankyoTaiouModal = async (
@@ -20,10 +20,10 @@ const openHankyoTaiouModal = async (
 
 
   if (kintoneRecord &&
-        raceConditionHandler( {
-          kintoneRecord,
-          kintoneRecordId,
-          triggerId: payload.trigger_id} ).valid) {
+    handleRaceCondition( {
+      kintoneRecord,
+      kintoneRecordId,
+      triggerId: payload.trigger_id} ).valid) {
     const emailBody = kintoneRecord.main?.value.toString() ||
     '問題が発生しました。@レンズを連絡してください。';
 

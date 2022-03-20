@@ -9,6 +9,8 @@ export const confirmStopNotify: SlackActionFn = async (
   );
 
   const kintoneResult = await getRecord(kintoneRecordId);
-  const kintoneRecord = kintoneResult?.record as unknown;
+  const kintoneRecord = kintoneResult
+    ?.record as unknown as Yume.longtermCust.SavedFields;
+
   if (!kintoneRecord) return;
 };

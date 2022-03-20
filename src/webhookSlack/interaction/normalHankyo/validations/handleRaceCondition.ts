@@ -9,7 +9,7 @@ interface RaceConditionParams {
   triggerId: string
 }
 
-const raceConditionHandler = ({
+export const handleRaceCondition = ({
   kintoneRecord,
   kintoneRecordId,
   triggerId,
@@ -35,4 +35,3 @@ const raceConditionHandler = ({
   return {valid: true};
 };
 
-export default raceConditionHandler;
