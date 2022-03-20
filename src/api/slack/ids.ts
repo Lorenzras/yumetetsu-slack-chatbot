@@ -8,7 +8,7 @@ export const actionIds = {
 
   // Normal Hankyo
   hankyoConfirmOpen: 'hankyoTaiou',
-  hankyoContents: 'hankyContents',
+  hankyoContents: 'hankyoContents',
 
   // longterm customers
   actOnLtHankyo: 'actOnLtHankyo',
