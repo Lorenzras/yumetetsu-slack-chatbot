@@ -22,6 +22,7 @@ const getActionButton = (payload: InteractionPayload) => {
  */
 const handleBlockActions = (payload: InteractionPayload) => {
   const action = getActionButton(payload);
+  console.log('MESSAGE', payload.message);
   /**
         Be sure to set actionIds at the client side too.
         The project is getting bigger so I am thinking to

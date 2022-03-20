@@ -12,7 +12,7 @@ const interaction : RequestHandler = (req, res) => {
   const payload : InteractionPayload
   | ViewSubmitAction = JSON.parse(body.payload);
 
-  console.log('PAYLOAD TYPE:', payload);
+
   switch (payload.type) {
     case 'block_actions':
       handleBlockActions(payload);
