@@ -3,7 +3,7 @@ import {ActionButton, InteractionPayload} from '../../../types/slack';
 
 
 import {getRecord} from '../../../api/kintone/get';
-import {sendModal} from '../../../api/slack/';
+import {sendModal} from '../../../api/slack';
 import {contents} from './blocks/modal';
 
 

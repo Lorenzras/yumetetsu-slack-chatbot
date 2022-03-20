@@ -2,7 +2,7 @@
 
 import {hankyoMessage} from '../blocks/message';
 import {getDisplayName} from '../../../../api/slack';
-import {updateMessage} from '../../../../api/slack/';
+import {updateMessage} from '../../../../api/slack';
 
 
 const updateMessageHankyo = (

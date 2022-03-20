@@ -4,7 +4,7 @@ import {Router as router} from 'express';
 import slackEvents from '../middlewares/slack';
 import pushMessage from '../api/slack/pushMessage';
 
-import interaction from '../slackWebhook/interaction/interaction';
+import interaction from '../webhookSlack/interaction/interaction';
 import bodyParser from 'body-parser';
 
 
