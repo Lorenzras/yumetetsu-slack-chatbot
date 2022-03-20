@@ -2,19 +2,12 @@
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
 
 
-import {
-  KINTONE_API_TOKEN,
-  KINTONE_API_TOKEN_TOYOKAWA,
-  KINTONE_API_TOKEN_TOYOHASHI,
-  KINTONE_DOMAIN,
-} from '../../utils/constants';
-
 export const unifiedClient = new KintoneRestAPIClient({
-  baseUrl: KINTONE_DOMAIN,
+  baseUrl: process.env.KINTONE_BASE_URL,
   auth: {apiToken: [
-    KINTONE_API_TOKEN,
-    KINTONE_API_TOKEN_TOYOKAWA,
-    KINTONE_API_TOKEN_TOYOHASHI,
+    process.env.KINTONE_TOKEN_HANKYO,
+    process.env.KINTONE_TOKEN_LTCUST,
+
   ]},
 });
 
