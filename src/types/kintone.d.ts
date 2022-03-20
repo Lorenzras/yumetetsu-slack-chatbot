@@ -4,7 +4,7 @@ interface KintoneAppRecord {
   isEdit ?: boolean
 }
 
-type KintoneHankyoTaiouRecord = Partial<hankyo.SavedFields>
+type KintoneHankyoRecord = Partial<hankyo.SavedFields>
 
 interface HankyoApp extends KintoneAppRecord {
   record : RecordForParameter,

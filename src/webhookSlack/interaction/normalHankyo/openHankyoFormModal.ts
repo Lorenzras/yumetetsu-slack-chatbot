@@ -1,8 +1,6 @@
 
 import {Option} from '@slack/types';
 
-
-import {InteractionPayload} from '../../../types/slack';
 import {submitAction, raceConditionError} from './blocks/modal';
 import {
   generateKintoneLink,
@@ -43,7 +41,7 @@ export const openHankyoFormModal = async (payload: InteractionPayload) => {
   const kintoneRecord = await getRecord(kintoneRecordId);
 
   const record = kintoneRecord?.record as
-            unknown as hankyo.SavedFields;
+            unknown as KintoneHankyoRecord;
 
 
   const selectedTaiouJiko = kintoneCheckboxToSlackOptions(
@@ -79,7 +77,7 @@ export const openHankyoFormModal = async (payload: InteractionPayload) => {
 
 
       updateMessageHankyo(
-        record as unknown as hankyo.SavedFields,
+        record,
         kintoneRecordId,
         userId,
       );

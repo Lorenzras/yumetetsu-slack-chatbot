@@ -8,6 +8,6 @@ export const getRecord = ({appId, recordId} : KintoneAppRecord) => {
       id: recordId,
     });
   } catch (error) {
-    console.log(error);
+    console.log('GET RECORD: ', error);
   }
 };

@@ -9,9 +9,9 @@
     "start": "npm run build && node ./dist/app.js",
     "start:forever": "npm run build && forever start -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c node ./dist/app.js",
     "build": "tsc ",
-    "dtsgen-toyokawa": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 155 --type-name Fields --namespace hankyo.toyokawa -o src/types/hankyoToyokawaFields.d.ts",
-    "dtsgen-toyohashi": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 167 --type-name Fields --namespace hankyo.toyohashi -o src/types/hankyoToyohashiFields.d.ts",
-    "dtsgen-hankyo": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com -u RPA03 --app-id 187 --type-name Fields --namespace hankyo -o src/types/hankyoFields.d.ts"
+    "dtsgen:hankyo": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 187 -u RPA03 --namespace Yume.hankyo -o src/types/hankyoFields.d.ts",
+    "dtsgen:ltcust": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 189 -u RPA03 --namespace Yume.longtermCust -o src/types/longtermCustFields.d.ts"
+
   },
   "author": "Lorenz Ras",
   "license": "ISC",

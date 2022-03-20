@@ -6,7 +6,7 @@ import {updateMessage} from '../../../../api/slack';
 
 
 const updateMessageHankyo = (
-  record : KintoneHankyoTaiouRecord | undefined,
+  record : KintoneHankyoRecord | undefined,
   kintoneRecordId : KintoneAppRecord,
   userId = 'いない',
 ) => {

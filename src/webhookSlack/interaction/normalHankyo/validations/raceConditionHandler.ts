@@ -4,7 +4,7 @@ import updateMessageHankyo from '../lib/updateMessageHankyo';
 import {raceConditionError} from '../blocks/modal';
 
 interface RaceConditionParams {
-  kintoneRecord : Partial<hankyo.SavedFields>,
+  kintoneRecord : KintoneHankyoRecord,
   kintoneRecordId: KintoneAppRecord,
   triggerId: string
 }

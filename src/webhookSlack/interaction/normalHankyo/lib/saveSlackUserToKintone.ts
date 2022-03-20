@@ -15,7 +15,7 @@ const saveSlackUserToKintone = async ({
 }: SaveSlackUserToHankyoParam) => {
   const displayName = await getDisplayName(userId);
 
-  const record : Partial<hankyo.SavedFields> = {
+  const record : KintoneHankyoRecord = {
     slackUser: {
       value: userName,
     },

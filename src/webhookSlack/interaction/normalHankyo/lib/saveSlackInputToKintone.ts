@@ -1,12 +1,10 @@
 
 
-import {InteractionPayload} from '../../../../types/slack';
-
 import {
   blockIds,
 } from '../config';
-import {updateRecord} from '../../../../api/kintone/kintone';
-import {actionIds} from '../../../../api/slack/ids';
+import {updateRecord} from '../../../../api/kintone/';
+import {actionIds} from '../../../../api/slack';
 
 
 export const saveSlackInputToKintone = async (payload : InteractionPayload) => {
@@ -45,7 +43,7 @@ export const saveSlackInputToKintone = async (payload : InteractionPayload) => {
   const inputBiko = blockBiko[multiline];
 
 
-  const record : Partial<hankyo.SavedFields> = {
+  const record : KintoneHankyoRecord = {
     taiouJiko: {value: selectedOptions || []},
     biko: {value: inputBiko.value ?? ''},
     main: {value: mailBody.value ?? ''},

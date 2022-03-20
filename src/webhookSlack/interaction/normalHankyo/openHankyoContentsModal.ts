@@ -1,7 +1,3 @@
-
-import {ActionButton, InteractionPayload} from '../../../types/slack';
-
-
 import {getRecord} from '../../../api/kintone/get';
 import {sendModal} from '../../../api/slack';
 import {contents} from './blocks/modal';
@@ -16,7 +12,7 @@ const openHankyoContentsModal = async (
 
   const kintoneRecord = (
     await getRecord(kintoneRecordId)
-  )?.record as unknown as hankyo.SavedFields;
+  )?.record as unknown as KintoneHankyoRecord;
 
   const emailBody = kintoneRecord
     ?.main.value?.toString() ?? 'Error. Contact Lenz. ';

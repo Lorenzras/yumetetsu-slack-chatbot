@@ -1,5 +1,5 @@
 
-import {ActionButton, InteractionPayload} from '../../../types/slack';
+
 import {getRecord} from '../../../api/kintone/get';
 import {sendModal} from '../../../api/slack';
 
@@ -16,7 +16,7 @@ const openHankyoTaiouModal = async (
 
   const kintoneRecord = (
     await getRecord(kintoneRecordId)
-  )?.record as unknown as Partial<hankyo.SavedFields>;
+  )?.record as KintoneHankyoRecord;
 
 
   if (kintoneRecord &&

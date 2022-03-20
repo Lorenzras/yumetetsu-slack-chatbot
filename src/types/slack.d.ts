@@ -1,13 +1,13 @@
-export interface InteractionBody {
+interface InteractionBody {
   payload : string
 }
 
-export interface ActionButton {
+interface ActionButton {
   action_id: string,
   value: string
 }
 
-export interface InteractionValues {
+interface InteractionValues {
   [BlockId : string] : {
     [ActionId : string] : {
       type: string,
@@ -24,7 +24,7 @@ export interface InteractionValues {
   }
 }
 
-export interface InteractionPayload {
+interface InteractionPayload {
   type: string,
   user: {
     id: string,
@@ -53,3 +53,7 @@ export interface InteractionPayload {
     ts: string
   }
 }
+
+
+type SlackActionFn = (
+  actionButton: ActionButton, payload: InteractionPayload ) => Promise<void>

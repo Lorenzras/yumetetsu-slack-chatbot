@@ -1,4 +1,4 @@
-declare namespace hankyo {
+declare namespace Yume.hankyo {
   interface Fields {
     slackThread: kintone.fieldTypes.MultiLineText;
     mail_to: kintone.fieldTypes.SingleLineText;

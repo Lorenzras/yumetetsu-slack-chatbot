@@ -1,8 +1,6 @@
 
 import {RequestHandler} from 'express';
-import {
-  InteractionBody, InteractionPayload,
-} from '../../types/slack';
+
 import handleBlockActions from './handleBlockActions';
 import handleViewSubmission from './handleViewSubmission';
 
