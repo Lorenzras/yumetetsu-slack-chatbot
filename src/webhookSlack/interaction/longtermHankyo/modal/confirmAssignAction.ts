@@ -1,11 +1,11 @@
 import {View} from '@slack/types';
-import {callbackIds} from './../../../../api/slack';
+import {callbackIds} from '../../../../api/slack';
 
 interface Param {
   privateMetaData: string,
 }
 
-export const confirmAction = ({
+export const confirmAssignAction = ({
   privateMetaData,
 } : Param) : View => {
   return {
