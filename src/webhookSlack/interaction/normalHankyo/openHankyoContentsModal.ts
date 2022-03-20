@@ -14,6 +14,8 @@ const openHankyoContentsModal = async (
     await getRecord(kintoneRecordId)
   )?.record as unknown as Yume.hankyo.SavedFields;
 
+  console.log('KINTONE RECORD ID : ' + kintoneRecordId, kintoneRecord);
+
   const emailBody = kintoneRecord
     ?.main.value?.toString() ?? 'Error. Contact Lenz. ';
   const taiouJiko = kintoneRecord
