@@ -1,7 +1,7 @@
 
 import {KintoneRestAPIClient} from '@kintone/rest-api-client';
 
-
+console.log(process.env);
 export const unifiedClient = new KintoneRestAPIClient({
   baseUrl: process.env.KINTONE_BASE_URL,
   auth: {apiToken: [
