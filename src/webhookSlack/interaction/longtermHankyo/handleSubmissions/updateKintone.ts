@@ -1,9 +1,10 @@
+import {ViewSubmitAction} from '@slack/bolt';
 import {kintoneClient} from '../../../../api/kintone';
 import {sendModal} from '../../../../api/slack';
 import {raceConditionError} from '../handleActions/blocks/modal';
 
 export const updateKintone = async (
-  payload: InteractionPayload,
+  payload: ViewSubmitAction,
   record: Partial<Yume.longtermCust.SavedFields>,
 ) => {
   const {

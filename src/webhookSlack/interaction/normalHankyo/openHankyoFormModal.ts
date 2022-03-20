@@ -11,6 +11,7 @@ import saveSlackUserToKintone from './lib/saveSlackUserToKintone';
 import {sendModal} from '../../../api/slack';
 import updateMessageHankyo from './lib/updateMessageHankyo';
 import {handleRaceCondition} from './validations/handleRaceCondition';
+import {ViewSubmitAction} from '@slack/bolt';
 
 
 const kintoneCheckboxToSlackOptions = (
@@ -32,11 +33,11 @@ const kintoneCheckboxToSlackOptions = (
 };
 
 
-export const openHankyoFormModal = async (payload: InteractionPayload) => {
+export const openHankyoFormModal = async (payload: ViewSubmitAction) => {
   const privateMetaData = payload.view.private_metadata;
   const kintoneRecordId = JSON.parse(privateMetaData);
   const userId = payload.user.id;
-  const userName = payload.user.username;
+  const userName = payload.user.name;
 
   const kintoneRecord = await getRecord(kintoneRecordId);
 

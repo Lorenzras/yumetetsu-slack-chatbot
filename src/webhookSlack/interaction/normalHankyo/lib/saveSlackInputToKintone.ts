@@ -5,9 +5,10 @@ import {
 } from '../config';
 import {updateRecord} from '../../../../api/kintone/';
 import {actionIds} from '../../../../api/slack';
+import {ViewSubmitAction} from '@slack/bolt';
 
 
-export const saveSlackInputToKintone = async (payload : InteractionPayload) => {
+export const saveSlackInputToKintone = async (payload : ViewSubmitAction) => {
   const kintoneRecordId = JSON.parse(payload.view.private_metadata);
   const values = payload.view.state.values;
 

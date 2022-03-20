@@ -9,9 +9,10 @@ import {
 } from './longtermHankyo/handleSubmissions/updateKintone';
 
 import {confirmAssignment} from './longtermHankyo';
+import {ViewSubmitAction} from '@slack/bolt';
 
 
-const handleViewSubmission = async (payload: InteractionPayload) => {
+const handleViewSubmission = async (payload: ViewSubmitAction) => {
   const callBackId = payload.view.callback_id;
   console.log('HANDLE SUBMISSION', payload);
   switch (callBackId) {

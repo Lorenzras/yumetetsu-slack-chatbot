@@ -4,25 +4,33 @@ import {slackClient} from '../../../../api/slackClient';
 import {confirmedAssignment} from '../handleActions/blocks/';
 import {ViewSubmitAction} from '@slack/bolt';
 
+export interface ConfirmAssignmentData {
+  appId: string,
+  recordId: string,
+  custId: string,
+  channelId: string,
+  messageTs: string
+}
+
 export const confirmAssignment = async (
-  payload: InteractionPayload,
+  payload: ViewSubmitAction,
 ) => {
   const {
-
     view: {
       private_metadata: privateMetaData,
-    },
-    container: {
-      message_ts: messageTs,
-      channel_id: channelId,
     },
     user: {
       id: slackUserId,
     },
   } = payload;
 
-  console.log('PAYLOADDDD', payload);
-  const parsedPrivateMetaData = JSON.parse(privateMetaData) as {custId: string};
+
+  const {
+    custId,
+    messageTs,
+    channelId,
+  } = JSON
+    .parse(privateMetaData) as ConfirmAssignmentData;
 
   await updateKintone(payload, {
     slackChannel: {value: channelId},
@@ -35,7 +43,7 @@ export const confirmAssignment = async (
     channel: channelId,
     blocks: confirmedAssignment({
       userId: slackUserId,
-      custId: parsedPrivateMetaData.custId,
+      custId: custId,
     }),
     thread_ts: messageTs,
   });
