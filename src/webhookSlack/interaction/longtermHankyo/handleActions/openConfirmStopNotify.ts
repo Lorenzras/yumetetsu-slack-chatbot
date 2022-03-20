@@ -29,5 +29,5 @@ export const openConfirmStopNotify: SlackActionFn = async (
   );
 
 
-  console.log('RESPONSE', slackResp);
+  return slackResp;
 };
