@@ -5,10 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "upstart": "git pull && npm run build",
     "dev": "nodemon src/app.ts",
     "start": "npm run build && node ./dist/app.js",
-    "start:forever": "npm run build && forever start --uid yume-slack -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c node ./dist/app.js",
+    "start:forever": "git pull && npm run build && forever start --uid yume-slack -v -o yumetetsu-slack.log -e yumetetsu-slog-err.log -c node ./dist/app.js",
     "build": "tsc ",
     "dtsgen:hankyo": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 187 -u RPA03 --namespace Yume.hankyo -o src/types/hankyoFields.d.ts",
     "dtsgen:ltcust": "kintone-dts-gen --base-url https://rdmuhwtt6gx7.cybozu.com/ --app-id 189 -u RPA03 --namespace Yume.longtermCust -o src/types/longtermCustFields.d.ts"
