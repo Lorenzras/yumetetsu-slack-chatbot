@@ -1,5 +1,5 @@
 
-import {callbackIds} from '../../../ids';
+import {callbackIds} from '../../../../api/slack/ids';
 
 
 export const blockIds = {

@@ -1,5 +1,5 @@
 import {View} from '@slack/types';
-import {callbackIds} from '../../../../ids';
+import {callbackIds} from '../../../../../api/slack/ids';
 
 
 interface hankyouTaiouParam {

@@ -2,7 +2,7 @@ import {InteractionPayload} from '../../types/slack';
 // import {HANKYO_TAIOU, HANKYO_TAIOU_SEND} from '../../utils/constants';
 import {saveSlackInputToKintone} from './normalHankyo/lib';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
-import {callbackIds} from '../ids';
+import {callbackIds} from '../../api/slack/ids';
 
 
 const handleViewSubmission = async (payload: InteractionPayload) => {

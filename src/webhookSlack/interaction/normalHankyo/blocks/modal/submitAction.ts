@@ -1,5 +1,5 @@
 import {Option, View} from '@slack/types';
-import {callbackIds, actionIds} from '../../../../ids';
+import {callbackIds, actionIds} from '../../../../../api/slack/ids';
 import {blockIds} from '../../config';
 
 

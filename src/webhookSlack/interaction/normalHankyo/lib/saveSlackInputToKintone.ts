@@ -6,7 +6,7 @@ import {
   blockIds,
 } from '../config';
 import {updateRecord} from '../../../../api/kintone/kintone';
-import {actionIds} from '../../../ids';
+import {actionIds} from '../../../../api/slack/ids';
 
 
 export const saveSlackInputToKintone = async (payload : InteractionPayload) => {

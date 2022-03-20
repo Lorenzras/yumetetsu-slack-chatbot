@@ -1,5 +1,5 @@
 import {KnownBlock} from '@slack/types';
-import {actionIds} from '../../../../ids';
+import {actionIds} from '../../../../../api/slack/ids';
 
 
 interface HankyoMessageParams {

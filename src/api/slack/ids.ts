@@ -2,12 +2,17 @@
 
 /* Fields and button actions */
 export const actionIds = {
-  hankyoConfirmOpen: 'hankyoTaiou',
-  hankyoContents: 'hankyContents',
+  // common
   checkboxes: 'checkBoxes',
   multiline: 'multiline',
-  btnLongtermCustYes: 'btnLongtermCustYes',
-  btnLongtermCustStopNotif: 'btnLongtermCustStopNotif',
+
+  // Normal Hankyo
+  hankyoConfirmOpen: 'hankyoTaiou',
+  hankyoContents: 'hankyContents',
+
+  // longtermHankyo
+  actOnLtHankyo: 'actOnLtHankyo',
+  stopNotify: 'stopNotify',
 };
 
 /* submitted forms */
