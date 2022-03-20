@@ -1,12 +1,10 @@
 
 import {Router as router} from 'express';
-import mentionHandler
-  from '../controllers/slackEvents/mention/mentionHandler';
 
 import slackEvents from '../middlewares/slack';
-import pushMessage from '../controllers/slackEvents/mention/pushMessage';
+import pushMessage from '../api/slack/pushMessage';
 
-import interaction from '../controllers/slackEvents/interaction/interaction';
+import interaction from '../slackWebhook/interaction/interaction';
 import bodyParser from 'body-parser';
 
 
@@ -18,8 +16,10 @@ route.use(bodyParser.urlencoded({extended: true}));
 
 route.get('/webhook/test', pushMessage);
 route.use('/webhook', slackEvents.expressMiddleware());
-slackEvents.on('app_mention', mentionHandler);
-slackEvents.on('error', (e : Error) => console.log('error', e));
+
+/* Socket method. */
+/* slackEvents.on('app_mention', mentionHandler);
+slackEvents.on('error', (e : Error) => console.log('error', e)); */
 
 route.post('/interactive-endpoint', interaction);
 

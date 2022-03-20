@@ -18,7 +18,7 @@ ${formatDistanceToNow(
 
 /**
  * Generates slack blocks from kintone records
- *
+ * @deprecated
  * @param records kintone
  * @param header
  * @return {Block}

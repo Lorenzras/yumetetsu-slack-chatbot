@@ -1,16 +1,15 @@
-require('dotenv').config();
 
 export const SLACK_BOT_TOKEN = process
-    .env.SLACK_BOT_TOKEN;
+  .env.SLACK_BOT_TOKEN;
 
 export const KINTONE_API_TOKEN_TOYOKAWA = process
-    .env.KINTONE_API_TOKEN_TOYOKAWA;
+  .env.KINTONE_API_TOKEN_TOYOKAWA;
 
 export const KINTONE_API_TOKEN_TOYOHASHI = process
-    .env.KINTONE_API_TOKEN_TOYOHASHI;
+  .env.KINTONE_API_TOKEN_TOYOHASHI;
 
 export const KINTONE_API_TOKEN = process
-    .env.KINTONE_API_TOKEN;
+  .env.KINTONE_API_TOKEN;
 
 export const SLACK_SIGNING_SECRET = process.env.SLACK_SIGNING_SECRET;
 
