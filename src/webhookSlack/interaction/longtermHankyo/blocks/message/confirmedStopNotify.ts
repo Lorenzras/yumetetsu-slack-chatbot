@@ -36,7 +36,7 @@ export const confirmedStopNotify = ({
         },
         {
           'type': 'mrkdwn',
-          'text': `<${generateDoNetLink(custId || '')}|donetworkで詳細を確認する> `,
+          'text': `<${generateDoNetLink(custId || '')}|donetworkで開く> `,
         },
       ],
     },
