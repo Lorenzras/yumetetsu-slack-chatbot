@@ -2,7 +2,7 @@
 import {slackClient} from '../slackClient';
 
 const getUser = async (userId: string) => {
-  return await slackClient.client.users.info({user: userId} );
+  return await slackClient.users.info({user: userId} );
 };
 
 export const getDisplayName = async (userId: string) => {

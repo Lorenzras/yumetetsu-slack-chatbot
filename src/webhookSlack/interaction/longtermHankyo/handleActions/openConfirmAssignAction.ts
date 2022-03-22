@@ -1,8 +1,7 @@
 
 import {getRecord} from '../../../../api/kintone';
 import {sendModal} from '../../../../api/slack';
-import {ConfirmAssignmentData} from '../handleSubmissions';
-import {confirmAssignAction} from './blocks/';
+import {confirmAssignAction} from '../blocks';
 
 
 export const openConfirmAssignAction: SlackActionFn = async (
@@ -25,7 +24,7 @@ export const openConfirmAssignAction: SlackActionFn = async (
     revision: $revision.value,
     channelId: payload.container.channel_id,
     messageTs: payload.container.message_ts,
-  } as ConfirmAssignmentData);
+  } as PrivateMetaData);
 
   const slackResp = sendModal(
     payload.trigger_id,

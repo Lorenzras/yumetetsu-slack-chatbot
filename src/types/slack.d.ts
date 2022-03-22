@@ -1,5 +1,13 @@
 /* eslint-disable max-len */
 
+interface PrivateMetaData {
+  appId: string,
+  recordId: string,
+  revision?:string,
+  custId?: string,
+  channelId?: string,
+  messageTs?: string
+}
 
 interface InteractionBody {
   payload : string

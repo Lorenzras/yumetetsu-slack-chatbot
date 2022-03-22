@@ -1,6 +1,6 @@
 import {View} from '@slack/types';
-import {callbackIds} from '../../../../../../api/slack';
-import {fields} from '../../../config';
+import {callbackIds} from '../../../../../api/slack';
+import {fields} from '../../config';
 
 interface Param {
   privateMetaData: string,

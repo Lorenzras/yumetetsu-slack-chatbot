@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {KnownBlock} from '@slack/types';
-import {generateDoNetLink} from '../../../../../../utils';
+import {generateDoNetLink} from '../../../../../utils';
 
 
 interface Param {

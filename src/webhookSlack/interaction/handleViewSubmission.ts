@@ -4,13 +4,9 @@ import {saveSlackInputToKintone} from './normalHankyo/lib';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
 import {callbackIds} from '../../api/slack/ids';
 
-import {
-  updateKintone,
-} from './longtermHankyo/handleSubmissions/updateKintone';
-
 import {confirmAssignment} from './longtermHankyo';
 import {ViewSubmitAction} from '@slack/bolt';
-import {fields as stopNotifyFields} from './longtermHankyo/config';
+import {confirmStopNotify} from './longtermHankyo/handleSubmissions';
 
 
 const handleViewSubmission = async (payload: ViewSubmitAction) => {
@@ -27,12 +23,7 @@ const handleViewSubmission = async (payload: ViewSubmitAction) => {
 
     /* Longterm Customers */
     case callbackIds.stopNotify:
-      const {stopNotify} = stopNotifyFields;
-      await updateKintone(payload, {
-        stopNotifyReason: {value: payload
-          .view.state
-          .values[stopNotify.blockId][stopNotify.actionId].value || ''},
-      });
+      await confirmStopNotify(payload);
       break;
     case callbackIds.actOnLtHankyo: // Assign agent
       await confirmAssignment(payload);

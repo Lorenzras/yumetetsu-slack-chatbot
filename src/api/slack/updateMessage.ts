@@ -5,7 +5,7 @@ import {slackClient} from '../slackClient';
 
 export const updateMessage = async (updateObject : ChatUpdateArguments) => {
   try {
-    const result = await slackClient.client.chat.update(updateObject);
+    const result = await slackClient.chat.update(updateObject);
 
     return result;
   } catch (error) {
