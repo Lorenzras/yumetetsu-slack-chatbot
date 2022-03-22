@@ -10,6 +10,7 @@ import {
 
 import {confirmAssignment} from './longtermHankyo';
 import {ViewSubmitAction} from '@slack/bolt';
+import {fields as stopNotifyFields} from './longtermHankyo/config';
 
 
 const handleViewSubmission = async (payload: ViewSubmitAction) => {
@@ -26,8 +27,11 @@ const handleViewSubmission = async (payload: ViewSubmitAction) => {
 
     /* Longterm Customers */
     case callbackIds.stopNotify:
+      const {stopNotify} = stopNotifyFields;
       await updateKintone(payload, {
-        isNotActive: {value: '1'},
+        stopNotifyReason: {value: payload
+          .view.state
+          .values[stopNotify.blockId][stopNotify.actionId].value || ''},
       });
       break;
     case callbackIds.actOnLtHankyo: // Assign agent
