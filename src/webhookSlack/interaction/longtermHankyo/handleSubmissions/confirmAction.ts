@@ -9,8 +9,10 @@ import {confirmedAction} from '../blocks/message/confirmedAction';
 const getReasonInPayload = (payload: ViewSubmitAction): string => {
   const {stopNotify} = stopNotifyFields;
   const reasonBlock = payload.view.state.values[stopNotify.blockId];
+
   if (!reasonBlock) return '';
 
+  console.log(reasonBlock);
   return reasonBlock[stopNotify.actionId].value || '';
 };
 
