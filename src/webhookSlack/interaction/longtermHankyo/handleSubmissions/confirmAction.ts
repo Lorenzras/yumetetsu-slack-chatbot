@@ -6,6 +6,12 @@ import {notifyDev} from '../../../../utils/slack';
 import {fields as stopNotifyFields} from '../config';
 import {confirmedAction} from '../blocks/message/confirmedAction';
 
+const getReasonInPayload = (payload: ViewSubmitAction): string => {
+  const {stopNotify} = stopNotifyFields;
+  const reasonBlock = payload.view.state.values[stopNotify.blockId];
+
+  return reasonBlock[stopNotify.actionId].value || '';
+};
 
 export const confirmAction = async (
   payload: ViewSubmitAction,
@@ -33,10 +39,7 @@ export const confirmAction = async (
     return;
   }
 
-  const {stopNotify} = stopNotifyFields;
-  const reason = payload
-    .view.state
-    .values[stopNotify.blockId][stopNotify.actionId].value || '';
+  const reason = getReasonInPayload(payload);
 
   try {
     await updateKintone(payload, {
@@ -44,7 +47,7 @@ export const confirmAction = async (
       slackTS: {value: messageTs},
       slackUserId: {value: slackUserId},
       slackDisplayName: {value: await getDisplayName(slackUserId)},
-      stopNotifyReason: {value: reason},
+      stopNotifyReason: {value: getReasonInPayload(payload)},
     });
 
     /* Post to thread */
