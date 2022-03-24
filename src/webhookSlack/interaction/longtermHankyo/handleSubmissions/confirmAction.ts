@@ -1,5 +1,5 @@
 import {updateKintone} from './updateKintone';
-import {getDisplayName} from '../../../../api/slack';
+import {getDisplayName, removeBlocksActions} from '../../../../api/slack';
 import {slackClient} from '../../../../api/slackClient';
 import {ViewSubmitAction} from '@slack/bolt';
 import {notifyDev} from '../../../../utils/slack';
@@ -64,6 +64,9 @@ export const confirmAction = async (
       }),
       thread_ts: messageTs,
     });
+
+    /* Remove action */
+    await removeBlocksActions(channelId, messageTs);
   } catch (e) {
     console.log('Error.', e);
   }

@@ -3,10 +3,7 @@
 import {saveSlackInputToKintone} from './normalHankyo/lib';
 import {openHankyoFormModal} from './normalHankyo/openHankyoFormModal';
 import {callbackIds} from '../../api/slack/ids';
-
-import {confirmAssignment} from './longtermHankyo';
 import {ViewSubmitAction} from '@slack/bolt';
-import {confirmStopNotify} from './longtermHankyo/handleSubmissions';
 import {confirmAction} from './longtermHankyo/handleSubmissions/confirmAction';
 
 

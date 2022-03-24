@@ -1,3 +1,2 @@
-export * from './confirmAssignment';
-export * from './confirmStopNotify';
+export * from './confirmAction';
 export * from './updateKintone';
