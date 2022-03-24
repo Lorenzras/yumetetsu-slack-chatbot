@@ -39,8 +39,10 @@ export const confirmAssignment = async (
     slackDisplayName: {value: await getDisplayName(slackUserId)},
   });
 
+  /* Post to thread */
   await slackClient.chat.postMessage({
     channel: channelId,
+    text: `長期追客`,
     blocks: confirmedAssignment({
       userId: slackUserId,
       custId: custId,

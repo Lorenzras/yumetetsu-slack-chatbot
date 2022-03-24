@@ -6,24 +6,28 @@ import {generateDoNetLink} from '../../../../../utils';
 interface Param {
   userId: string,
   custId?: string,
+  reason?: string
 }
 
-/**
- *
- * @param param0
- * @returns {*}
- * @deprecated refactored to confirmedAction
- */
-export const confirmedAssignment = ({
+
+export const confirmedAction = ({
   userId,
   custId,
+  reason,
 }: Param) : KnownBlock[] => {
+  const mainMessage = reason ? [
+    `*この顧客の追客は、以下の理由により停止されました。*`,
+    `${reason} ~<@${userId}>`,
+  ]
+    .join('\n') :
+    `:white_check_mark: <@${userId}> さんが対応しています。`;
+
   return [
     {
       'type': 'section',
       'text': {
         'type': 'mrkdwn',
-        'text': `:white_check_mark: <@${userId}> さんが対応しています。`,
+        'text': mainMessage,
       },
     },
     {

@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBlock is successfult 1`] = `
+Array [
+  Object {
+    "block_id": "act",
+    "text": Object {
+      "emoji": true,
+      "text": ":newspaper: 長期追客顧客",
+      "type": "plain_text",
+    },
+    "type": "header",
+  },
+  Object {
+    "block_id": "6kz=",
+    "text": Object {
+      "text": "追客可能時期となりました!
+お客様へのご連絡・ご対応をお願いします！",
+      "type": "mrkdwn",
+      "verbatim": false,
+    },
+    "type": "section",
+  },
+  Object {
+    "block_id": "Coe1",
+    "type": "divider",
+  },
+  Object {
+    "block_id": "I5D",
+    "fields": Array [
+      Object {
+        "text": "*顧客番号：*
+778290",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*受付日：*
+2019-03-24",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*お客様名：*
+伊藤　章人",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*店舗：*
+ハウスドゥ  豊橋向山",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*担当者：*
+髙瀬　弘",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*連絡先：*
+
+<tel:080-9111-7480|080-9111-7480>
+",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      Object {
+        "text": "*住所：*
+愛知県 豊橋市 清須町字地形11パストラルベルＣ203",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+    ],
+    "type": "section",
+  },
+  Object {
+    "block_id": "9A2Y",
+    "type": "divider",
+  },
+  Object {
+    "block_id": "s4mQh",
+    "text": Object {
+      "text": "*備考/他決中止理由:*
+ 2019/3/24　西浜町ＯＨ来場。スタッフ森下さん対応。その後高瀬さん来店誘致ＴＥＬ。同日来店、面談。 11月呼んで事前やったが、個信くしゃくしゃで中止。
+",
+      "type": "mrkdwn",
+      "verbatim": false,
+    },
+    "type": "section",
+  },
+  Object {
+    "block_id": "voY1r",
+    "type": "divider",
+  },
+  Object {
+    "block_id": "q3Gw",
+    "elements": Array [
+      Object {
+        "action_id": "actOnLtHankyo",
+        "style": "primary",
+        "text": Object {
+          "emoji": true,
+          "text": "対応します",
+          "type": "plain_text",
+        },
+        "type": "button",
+        "value": "{\\"appId\\":\\"189\\",\\"recordId\\":\\"280\\"}",
+      },
+      Object {
+        "action_id": "stopNotify",
+        "style": "danger",
+        "text": Object {
+          "emoji": true,
+          "text": "追客を停止する",
+          "type": "plain_text",
+        },
+        "type": "button",
+        "value": "{\\"appId\\":\\"189\\",\\"recordId\\":\\"280\\"}",
+      },
+    ],
+    "type": "actions",
+  },
+  Object {
+    "block_id": "FWE",
+    "elements": Array [
+      Object {
+        "text": "*追客可能時期:* 未定
+<https://rdmuhwtt6gx7.cybozu.com//k/189/show#record=280|Kintoneで開く>
+<https://manage.do-network.com/customer/778290/edit|DoNetworkで開く> 事前にブラウザでログインが必須",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+    ],
+    "type": "context",
+  },
+  Object {
+    "block_id": "8fnau",
+    "type": "divider",
+  },
+]
+`;

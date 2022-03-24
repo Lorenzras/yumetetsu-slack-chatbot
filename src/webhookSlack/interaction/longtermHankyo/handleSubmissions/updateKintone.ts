@@ -22,8 +22,10 @@ export const updateKintone = async (
     record,
   })
     .catch(()=>{
-      return sendModal(
+      sendModal(
         triggerId,
-        raceConditionError({userId: kintoneRecord.slackUserId || ''}) );
+        raceConditionError({userId: kintoneRecord.slackUserId || ''}),
+      );
+      throw new Error('Failed to save.');
     });
 };

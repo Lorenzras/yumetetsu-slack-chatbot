@@ -7,6 +7,7 @@ import {callbackIds} from '../../api/slack/ids';
 import {confirmAssignment} from './longtermHankyo';
 import {ViewSubmitAction} from '@slack/bolt';
 import {confirmStopNotify} from './longtermHankyo/handleSubmissions';
+import {confirmAction} from './longtermHankyo/handleSubmissions/confirmAction';
 
 
 const handleViewSubmission = async (payload: ViewSubmitAction) => {
@@ -23,10 +24,8 @@ const handleViewSubmission = async (payload: ViewSubmitAction) => {
 
     /* Longterm Customers */
     case callbackIds.stopNotify:
-      await confirmStopNotify(payload);
-      break;
     case callbackIds.actOnLtHankyo: // Assign agent
-      await confirmAssignment(payload);
+      await confirmAction(payload);
       break;
   }
 };

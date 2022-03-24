@@ -44,7 +44,7 @@ export const confirmStopNotify = async (
 
   await slackClient.chat.postMessage({
     channel: channelId,
-    text: `長期追客通知停止：${reason}`,
+    text: '通知停止',
     blocks: confirmedStopNotify({
       userId: slackUserId,
       custId: custId,

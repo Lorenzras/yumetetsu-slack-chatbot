@@ -9,7 +9,12 @@ interface Param {
   reason: string
 }
 
-
+/**
+ *
+ * @param param0
+ * @returns {*}
+ * @deprecated refactored to confirmedAction
+ */
 export const confirmedStopNotify = ({
   userId,
   custId,
