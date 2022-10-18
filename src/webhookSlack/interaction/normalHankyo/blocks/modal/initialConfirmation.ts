@@ -50,7 +50,7 @@ export const initialConfirmation = (
       {
         'type': 'section',
         'text': {
-          'type': 'plain_text',
+          'type': 'mrkdwn',
           'text': cropEmailBody,
         },
       },
